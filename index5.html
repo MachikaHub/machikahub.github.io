@@ -189,51 +189,37 @@ main {
     outline: none;
 }
 .about-content {
-    /* 基本は縦並びのまま（必要な箇所だけ上書き） */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
 }
-
-/* プレースホルダ画像は自然なサイズで表示（全体の崩れが怖ければ max-width を微調整してください） */
-.placeholder-image {
-    max-width: 100%;
-    width: auto;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 0;
-    object-fit: contain;
-}
-
-/* circle.png のように小さめ固定したい画像は専用クラスで調整 */
-.diagram-image {
-    max-width: 330px;
+.about-image {
     width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
-
-/* problem / solution セクションだけ画像左・文章右のレイアウトにする */
-.problem-section .about-content,
-.solution-section .about-content {
-    display: grid;
-    grid-template-columns: 380px 1fr; /* 画像(左) + テキスト(右) */
-    gap: 2rem;
+.placeholder-image {
+    width: 260px;
+    height: 260px;
+    max-width: 100%;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
-    max-width: 1100px;
+    justify-content: center;
     margin: 0 auto;
-    padding: 0 24px;
-    box-sizing: border-box;
+    font-size: 4rem;
+    color: #2c5aa0;
 }
-
-/* テキストの基本色・整形 */
-.about-text h3,
+.about-text h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #2c5aa0;
+}
 .about-text p {
-    text-align: left;
-    color: #222;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
 }
 .services {
     background: #fff;
@@ -371,7 +357,7 @@ main {
     padding: 80px 0;
 }
 .process-container {
-    max-width: 1100px;
+    max-width: 800px;
     margin: 0 auto;
     padding-left: 24px;
     padding-right: 24px;
@@ -391,11 +377,9 @@ main {
     gap: 30px;
     position: relative;
     margin-bottom: 50px;
-    flex-wrap: wrap;
 }
 .process-step {
-    flex: 1 1 200px; /* 余白を保ちつつ5つ並べやすく */
-    min-width: 180px; /* 極端に小さくならないように */
+    flex: 1;
     text-align: left;
     position: relative;
     background: white;
@@ -419,11 +403,9 @@ main {
     color: white;
     position: relative;
 }
-.process-step:nth-child(1) .step-icon { background: linear-gradient(135deg, #84d0ff 0%, #7bcdff 100%); } /* 落ち着いたスレートブルー */
-.process-step:nth-child(2) .step-icon { background: linear-gradient(135deg, #fda3da 0%, #ff95d6 100%); } /* 穏やかなモーブ */
-.process-step:nth-child(3) .step-icon { background: linear-gradient(135deg, #f5f5f5 0%, #f5f5f5 100%); } /* 落ち着いたティール */
-.process-step:nth-child(4) .step-icon { background: linear-gradient(135deg, #fed79c 0%, #ffd18e 100%); } /* 渋めのアンバー */
-.process-step:nth-child(5) .step-icon { background: linear-gradient(135deg, #a46d84 0%, #a1667f 100%); } /* 穏やかなセージ */
+.process-step:nth-child(1) .step-icon { background: linear-gradient(135deg, #667eea, #764ba2);}
+.process-step:nth-child(2) .step-icon { background: linear-gradient(135deg, #f093fb, #f5576c);}
+.process-step:nth-child(3) .step-icon { background: linear-gradient(135deg, #4facfe, #00f2fe);}
 .step-number {
     position: absolute;
     top: -10px;
@@ -457,20 +439,6 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
-}
-.company-info .about-text {
-    padding-left: 40px; /* 左側の余白を広げる */
-}
-
-/* 小画面では余白をリセットしてレイアウトを崩さない */
-@media (max-width: 1024px) {
-    .company-info {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    .company-info .about-text {
-        padding-left: 0;
-    }
 }
 .info-table {
     background: white;
@@ -630,17 +598,17 @@ main {
         grid-template-columns: repeat(2, 1fr);
     }
     .pricing-table-container {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-    }
-    .pricing-card {
-        width: 90%;
-        min-width: 260px;
-        max-width: 400px;
-        margin: 0 0 24px 0;
-        flex: 0 1 auto;
-    }
+  .pricing-table-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pricing-card {
+    width: 90%;
+    min-width: 260px;
+    max-width: 400px;
+    margin: 0 0 24px 0;
+  }
+}
     .recommended {
         transform: scale(1);
     }
@@ -685,68 +653,6 @@ main {
         grid-template-columns: 1fr;
     }
 }
-
-/* セクションごとの背景色指定（ご指定のパターン） */
-/* ヒーロー：白 */
-#home.hero {
-    background: #fff !important;
-    color: var(--main-navy);
-}
-#home.hero .hero-video iframe {
-    border-radius: 12px;
-}
-
-/* お悩み（problem-section）：グレー */
-.problem-section {
-    background: var(--section-bg);
-}
-
-/* 伝えたい気持ち（solution-section）：白 */
-.solution-section {
-    background: #fff;
-}
-
-/* サービス：グレー */
-#services,
-section.services {
-    background: var(--section-bg);
-}
-
-/* 料金プラン：白 */
-#testimonials,
-.testimonials {
-    background: #fff;
-}
-
-/* プロセス：グレー */
-.process-flow {
-    background: var(--section-bg);
-}
-
-/* 企業情報：白 */
-#company {
-    background: #fff;
-}
-
-/* お問い合わせ：グレー（かつ文字を濃い色に） */
-#contact.contact {
-    background: var(--section-bg);
-    color: var(--main-navy);
-}
-#contact.contact .section-title {
-    color: var(--main-navy);
-}
-#contact.contact .contact-form-wrapper {
-    background: #fff;
-    color: var(--main-navy);
-}
-
-/* 小さな上書き（必要に応じて調整） */
-.section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-}
-
 a:focus, button:focus {
     outline: 2px solid var(--accent-blue);
     outline-offset: 2px;
@@ -786,120 +692,98 @@ a:focus, button:focus {
     <main>
         <!-- ヒーロー -->
         <section id="home" class="hero">
+            <h2 class="section-title">『事業の成長』と『社長個人の豊かさ』は、同時に実現できる。</h2>
             <div class="hero-video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/IqwFFyKJmo4?autoplay=1&mute=1&rel=0&controls=1" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; clipboard-write; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            </div>
+                <iframe src="https://www.youtube.com/embed/QYOzMM2sYUI?autoplay=1&mute=1&loop=1&playlist=QYOzMM2sYUI&controls=1&showinfo=0&modestbranding=1&playsinline=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen title="会社紹介動画"></iframe>
+            </div>
         </section>
-
         <!-- お悩み -->
-        <section class="section problem-section">
-            <h2 class="section-title">中小企業の経営者・ひとり社長の皆様へ</h2>
+        <section class="section">
+            <h2 class="section-title">IT/SaaS企業 経営者の皆様へ</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="concern.png" alt="悩みイメージ" class="placeholder-image">
+                    <img src="top.png" alt="会社イメージ" class="placeholder-image">
                 </div>
                 <div class="about-text">
-                    <h3>こんなお金の悩み、一人で抱え込んでいませんか？</h3>
-                    <p>▪️ 売上が伸び悩んでいる。</p>
-                    <p>▪️ オンライン集客を始めたいが、予算がない…</p>
-                    <p>▪️ 売上は増えた。でも、税金でごっそり持って行かれる…</p>
-                    <p>▪️ 会社のキャッシュは増えた。でも、社長である自分の将来は不安…</p>
-                    <h3>このままでは、貴重な時間と、得られるはずだった利益を失い続けます。</h3>
+                    <h3>こんなお悩みありませんか？</h3>
+                    <p>▪️ 導入メリットが３秒で伝わらない</p>
+                    <p>▪️ 営業担当ごとに説明の質がバラつく</p>
+                    <p>▪️ 無料トライアル後の離脱率が高い</p>
+                    <p>▪️ SNS発信が、商談や売上に直結しない</p>
+                    <p>▪️ 英語版サイトはあるが、海外からのリードが増えない</p>
+                    <h3>…これらが揃うと、どれだけ優れたプロダクトでも<b>成長の限界は必ず訪れます。</b></h3>
                 </div>
             </div>
         </section>
         <!-- 伝えたい気持ち -->
-        <section class="section solution-section">
-            <h2 class="section-title">その悩みの根本原因は、<br>お金の悩みを「点」でバラバラに考えていることです。</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="circle.png" alt="ベン図イメージ" class="placeholder-image diagram-image" loading="lazy">
-                </div>
-                <div class="about-text">
-                    <h3>会社と個人、お金の悩みは「線」で考える。</h3>
-                    <p>売上を伸ばす<b>【攻め】</b>の戦略。</p>
-                    <p>キャッシュを残す<b>【守り】</b>の戦略。</p>
-                    <p>そして、社長個人の未来と資産を増やす<b>【築く】</b>戦略。</p>
-                    <p>この３つは本来、全て繋がっています。</p>
-                    <h3>MACHIKAは、この全体像を示し、その悩みを根本から解決します。</h3>
-                </div>
-            </div>
-            <p>　</p>
+        <section class="section">
+            <h2 class="section-title">MACHIKAは、動画とSNS、そして戦略設計を組み合わせ、<br>国内外で<b>価値が伝わる仕組み</b>をつくり、貴社の売り上げを伸ばします。</h2>
             <p style="text-align:center;"><a href="#contact" class="cta-button">無料で相談する</a></p>
         </section>
         <!-- サービス -->
         <section id="services" class="section services">
-            <h2 class="section-title">MACHIKAは、３つの戦略で悩みを解決します。</h2>
-            <div class="pricing-table-container">
-                <div class="pricing-card">
-                    <h3 class="plan-name">【攻め】の戦略</h3>
-                    <p class="plan-catchphrase">事業の成長エンジンを構築する</p>
-                    <ul class="feature-list">
-                        <li>集客の戦略策定</li>
-                        <li>補助金コンサル</li>
-                        <li>オンライン集客基盤構築</li>
-                        <li>営業・販促支援</li>
-                    </ul>
+            <h2 class="section-title">MACHIKAのサービスは、<br>４ステップで一気通貫</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>価値の可視化</h3>
+                    <p>複雑なプロダクトの価値を、<b>誰でもわかる図解</b>に凝縮。営業・マーケ全員が同じ言葉で価値を伝えられる状態へ。</p>
                 </div>
-                <div class="pricing-card">
-                    <h3 class="plan-name">【守り】の戦略</h3>
-                    <p class="plan-catchphrase">利益を守り、手取りを最大化する</p>
-                    <ul class="feature-list">
-                        <li>税理士と共に、節税を提案</li>
-                        <li>旅費規定の導入</li>
-                        <li>社宅規定の導入</li>
-                        <li>役員報酬の最適化設計など</li>
-                    </ul>
+                <div class="service-card">
+                    <div class="service-icon">🧠</div>
+                    <h3>理解の深化</h3>
+                    <p>見込み客の課題と導入メリットを盛り込んだ<b>90秒ストーリー動画</b>を制作。国内向けはもちろん、英語版、多言語対応も可能。</p>
                 </div>
-                <div class="pricing-card">
-                    <h3 class="plan-name">【積む】の戦略</h3>
-                    <p class="plan-catchphrase">社長個人の未来を、着実に築き上げる</p>
-                    <ul class="feature-list">
-                        <li>金融アドバイザーとして助言</li>
-                        <li>iDeCoで社長の手取り最大化へ</li>
-                        <li>リスクに備える保険の見直し</li>
-                        <li>ハッピーリタイア設計など</li>
-                    </ul>
+                <div class="service-card">
+                    <div class="service-icon">📚</div>
+                    <h3>信頼の構築</h3>
+                    <p>動画や図解を活用した<b>SNS運用</b>で継続的な接点を創出。国内マーケットから、海外見込み顧客への発信まで設計。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>戦略コンサルティング</h3>
+                    <p>マーケティングの仕組み化を伴走支援。単発で終わらず、国内外の売り上げ成長を継続。</p>
                 </div>
             </div>
-                        <p>　</p>            <p style="text-align:center;"><a href="#contact" class="cta-button">無料で相談する</a></p>
         </section>
-    <!-- 料金プラン -->
+        <!-- 料金プラン -->
         <section id="testimonials" class="section testimonials">
             <h2 class="section-title">料金プラン</h2>
             <div class="pricing-table-container">
                 <div class="pricing-card">
-                    <h3 class="plan-name">戦略策定プラン</h3>
-                    <p class="plan-catchphrase">現状を整理し、道筋を明確に</p>
-                    <div class="plan-price">15<span>万円／回</span></div>
+                    <h3 class="plan-name">ベーシックプラン</h3>
+                    <p class="plan-catchphrase">SNS発信の「勝ち筋」を確立する</p>
+                    <div class="plan-price"><span>月額</span>20<span>万円</span></div>
                     <ul class="feature-list">
-                        <li>戦略策定</li>
-                        <li>補助金の診断・解説</li>
-                        <li>実施計画案の作成</li>
+                        <li>SNSアカウント最適化（国内向け）</li>
+                        <li>ビジネスの図解化</li>
+                        <li>戦略的投稿（月16~30回程度）</li>
+                        <li>一次対応・交流施策</li>
                     </ul>
                     <a href="#contact" class="cta-button">この内容で相談する</a>
                 </div>
                 <div class="pricing-card recommended">
                     <div class="recommended-badge">推奨プラン</div>
-                    <h3 class="plan-name">クロージング支援プラン</h3>
-                    <p class="plan-catchphrase">集客の仕組みづくりと資金調達</p>
+                    <h3 class="plan-name">グロースプラン</h3>
+                    <p class="plan-catchphrase">SNS発信＋動画で集客を加速</p>
                     <div class="plan-price"><span>月額</span>30<span>万円</span></div>
                     <ul class="feature-list">
-                        <li>戦略策定</li>
-                        <li>SNS運用代行＋DM営業</li>
-                        <li>公式LINE構築</li>
-                        <li>補助金申請書類作成支援</li>
+                        <li><strong>ベーシックプランの全内容</strong></li>
+                        <li>サービス解説アニメ動画制作</li>
+                        <li>動画キャンペーンの企画・実行</li>
+                        <li>英語版動画制作オプション</li>
                     </ul>
                     <a href="#contact" class="cta-button">この内容で相談する</a>
                 </div>
                 <div class="pricing-card">
-                    <h3 class="plan-name">パートナープラン</h3>
-                    <p class="plan-catchphrase">社外パートナーとして、フル伴走</p>
+                    <h3 class="plan-name">プレミアムプラン</h3>
+                    <p class="plan-catchphrase">社外CMOとして、成果までフル伴走</p>
                     <div class="plan-price"><span>月額</span>50<span>万円</span></div>
                     <ul class="feature-list">
-                        <li><strong>左プラン内容全て</strong></li>
-                        <li>補助金実施報告サポート</li>
-                        <li>資産形成アドバイス</li>
-                        <li>定例ミーティング</li>
+                        <li><strong>グロースプランの全内容</strong></li>
+                        <li>月1回の定例戦略ミーティング</li>
+                        <li>パーソナライズド動画支援</li>
+                        <li>広告運用ディレクション（国内・海外）</li>
                     </ul>
                     <a href="#contact" class="cta-button">この内容で相談する</a>
                 </div>
@@ -908,15 +792,15 @@ a:focus, button:focus {
         <!-- プロセス -->
         <section id="process-flow" class="process-flow">
             <div class="process-container">
-                <h2 class="process-title">貴社成功までの５ステップ</h2>
+                <h2 class="process-title">貴社成功までの３ステップ</h2>
                 <div class="process-steps">
                     <div class="process-step">
                         <div class="step-icon">
                             <span>✉️</span>
                             <div class="step-number">1</div>
                         </div>
-                        <h3 class="step-title">無料ヒアリング</h3>
-                        <p class="step-description">フォームよりお問い合わせください。現状や展望をヒアリングします。</p>
+                        <h3 class="step-title">無料戦略ヒアリング</h3>
+                        <p class="step-description">フォームよりお問い合わせください。現状・課題・展望をヒアリングし、支援可能性を明確化。</p>
                     </div>
                     <div class="process-step">
                         <div class="step-icon">
@@ -924,33 +808,15 @@ a:focus, button:focus {
                             <div class="step-number">2</div>
                         </div>
                         <h3 class="step-title">個別戦略の提案</h3>
-                        <p class="step-description">貴社向けのアクションプランとお見積もりをご提示します。</p>
+                        <p class="step-description">ヒアリング内容をもとに、国内外に対応した<B>具体的アクションプラン</B>とお見積もりをご提示。</p>
                     </div>
                     <div class="process-step">
                         <div class="step-icon">
-                            <span>🤝</span>
+                            <span>🚀</span>
                             <div class="step-number">3</div>
                         </div>
                         <h3 class="step-title">契約・始動</h3>
-                        <p class="step-description">提案内容に納得いただければ、ご契約。実施に向けて準備開始です。</p>
-                    </div>
-        
-                    <!-- 追加ステップ -->
-                    <div class="process-step">
-                        <div class="step-icon">
-                            <span>🔍</span>
-                            <div class="step-number">4</div>
-                        </div>
-                        <h3 class="step-title">計画・戦略策定</h3>
-                        <p class="step-description">キックオフを行い、戦略を詳細に策定。実施計画に落とし込み。スケジュールを明確化します。</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-icon">
-                            <span>💻</span>
-                            <div class="step-number">5</div>
-                        </div>
-                        <h3 class="step-title">実施・改善</h3>
-                        <p class="step-description">策定した戦略計画に沿って実行。データに基づきPDCAを回し、効果が出た施策は拡張します。</p>
+                        <p class="step-description">提案内容に納得いただければご契約となります。実行と改善を繰り返し、最短で売上を伸ばす状態へ。</p>
                     </div>
                 </div>
             </div>
@@ -959,16 +825,15 @@ a:focus, button:focus {
         <section id="company" class="section">
             <h2 class="section-title">代表メッセージ</h2>
             <div class="company-info">
-                <div class="about-text">
-                    <h3>私が、あなたの最強のパートナーになれる理由</h3>
-                    <p>単なる一時的な支援ではなく、<b>「ビジネスこそが、人の生活を継続的に豊かにする」</b>という事実を目の当たりにし、事業を支える仕事に強い使命感を持つようになりました。</p>
-                    <p>そして会社の成功が、社長個人の人生の豊かさに繋がらなければ、本当の成功とは言えません。</p>
-                    <p>この想いを形にしたのが、会社と個人を一体で捉える<b>『お金の地図（攻め・守り・築く）』</b>という独自のフレームワークです。</p>
-                    <p>経営基盤を支える【中小企業診断士】として。<br>あなたの価値を伝える【マーケター】として。<br>個人の豊かさを設計する【金融アドバイザー】として。</p>
-                    <p><b>あなたの事業と人生の両方を、成功へと導く。</b><br>それが、私のミッションです。</p>
-                </div>
                 <div class="about-image">
-                    <img src="RP.png" alt="会社イメージ" class="placeholder-image">
+                    <img src="top.png" alt="会社イメージ" class="placeholder-image">
+                </div>
+                <div class="about-text">
+                    <h3>なぜ、経営コンサルが動画とSNS？</h3>
+                    <p>私はこれまで、中小企業診断士として数多くの企業の経営支援に携わってきました。その中で、素晴らしい技術やサービスを持ちながら、<b>「価値の伝え方」ひとつで国内外の成長の機会を逃す</b>現実をみてきました。</p>
+                    <p>その根深い経営課題を解決する最も強力な武器が、ロジカルな<b>「経営戦略」と、感情を動かす「クリエイティブ（動画・SNS）」の融合</b>であると、私は確信しています。</p>
+                    <p>これまで20社以上のSNS運用支援を通じて培ったノウハウと、延べ10年間の海外での駐在経験を掛け合わせ、国内SaaS市場の成長加速はもちろん、英語圏を中心とした海外展開まで、貴社の価値を正しく力強く伝えることが私の使命です。</p>
+                    <p>貴社の「見えない価値」を可視化し、ビジネスを成功に導く、唯一無二のパートナーとなることをお約束します。</p>
                 </div>
             </div>
         </section>
@@ -1019,10 +884,10 @@ a:focus, button:focus {
             <div class="footer-flex">
                 <div class="footer-block">
                     <p><strong>屋号</strong><br>合同会社MACHIKA</p>
-                    <p><strong>法人番号</strong><br>5180003028413</p>
+                    <p><strong>代表者</strong><br>町加 亮</p>
                 </div>
                 <div class="footer-block">
-                    <p><strong>事業内容</strong><br>オンライン集客支援<<br>補助金申請支援<br>営業代行<br>漫画／動画制作</p>
+                    <p><strong>事業内容</strong><br>マーケティング支援<br>SNS運用代行<br>動画コンテンツ制作</p>
                 </div>
                 <div class="footer-block">
                     <p><strong>所在地</strong><br>愛知県名古屋市中村区名駅４丁目２４番５号</p>
