@@ -751,6 +751,46 @@ a:focus, button:focus {
     outline: 2px solid var(--accent-blue);
     outline-offset: 2px;
 }
+            /* --- 追加：スマホで problem / solution を1列に戻す --- */
+    @media (max-width: 900px) {
+        .problem-section .about-content,
+        .solution-section .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding-left: 16px;
+            padding-right: 16px;
+            box-sizing: border-box;
+            /* grid の列指定をリセット（安全対策） */
+            grid-template-columns: none;
+        }
+
+        .problem-section .about-image,
+        .solution-section .about-image {
+            width: 100%;
+            max-width: 320px; /* 画像が大きすぎないように */
+            margin: 0 auto;
+        }
+
+        .problem-section .about-text,
+        .solution-section .about-text {
+            width: 100%;
+        }
+
+        .about-text h3,
+        .about-text p {
+            text-align: left;
+        }
+    }
+
+    /* 小さめ端末向け微調整 */
+    @media (max-width: 420px) {
+        .problem-section .about-image,
+        .solution-section .about-image {
+            max-width: 260px;
+        }
+    }
     </style>
 </head>
 <body>
