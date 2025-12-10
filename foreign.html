@@ -206,21 +206,34 @@
 
         /* --- 4. メリット・実績 --- */
         /* --- Worksセクションの修正用CSS --- */
+/* --- Worksセクションの修正用CSS（改良版） --- */
 .work-media-box {
-    height: 250px; /* 高さを250pxに固定 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f4f4f4; /* 背景色（動画読み込み前などに表示） */
+    width: 100%;
+    /* 高さ固定(height: 250px)を削除し、中身に合わせて伸びるように変更 */
+    position: relative;
+    background: #f4f4f4;
     border-radius: 4px;
-    overflow: hidden; /* はみ出た部分を隠す */
+    overflow: hidden;
     margin-bottom: 15px;
 }
+
+/* 動画用の設定：16:9の比率を保つ */
+.work-media-box.video-box {
+    aspect-ratio: 16 / 9;
+}
+
+/* チラシ画像用の設定：高さを出して大きく見せる */
+.work-media-box.image-box {
+    /* チラシを大きく見せるために高さを500px〜600pxに設定 */
+    height: 500px; 
+}
+
 .work-media-box iframe,
 .work-media-box img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* アスペクト比を保ったまま枠内に収める */
+    /* 動画は枠いっぱいに、画像は全体が見えるように */
+    object-fit: contain; 
 }
         .works-section { background-color: #fff; }
         .compare-box {
@@ -433,8 +446,8 @@
                         武器①：集客動画
                     </div>
                     <h3 style="margin-bottom:15px; font-size:1.3rem;">3秒で足を止める<br>「図解アニメーション」</h3>
-                    <div class="work-media-box">
-                    <frame width="100%" height="100%" src="https://www.youtube.com/embed/eDYESyfA44A?si=nfwfxoUfLI1ZX-9f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="work-media-box video-box">
+                    <frame width="100%" height="100%" src="https://www.youtube.com/embed/eDYESyfA44A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                     <p style="margin-top:15px; font-size:0.9rem; color:#666;">
                         騒がしい会場でも、音なしで内容が伝わるモーショングラフィックス。3Dよりも「メリット」が脳に刺さります。
@@ -446,7 +459,7 @@
                         武器②：マンガ資料
                     </div>
                     <h3 style="margin-bottom:15px; font-size:1.3rem;">捨てられない<br>「コミック形式チラシ」</h3>
-                    <div class="work-media-box">
+                    <div class="work-media-box image-box">
                     <div style="background:#f4f4f4; height:200px; display:flex; align-items:center; justify-content:center; color:#888; border:2px dashed #ccc; border-radius:4px;">
                         <img src="works_sample.png" alt="マンガチラシ サンプル">
                         </div></div>
