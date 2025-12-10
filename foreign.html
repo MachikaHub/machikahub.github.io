@@ -205,6 +205,23 @@
         .pillar-desc { font-size: 0.95rem; text-align: left; }
 
         /* --- 4. メリット・実績 --- */
+        /* --- Worksセクションの修正用CSS --- */
+.work-media-box {
+    height: 250px; /* 高さを250pxに固定 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f4f4; /* 背景色（動画読み込み前などに表示） */
+    border-radius: 4px;
+    overflow: hidden; /* はみ出た部分を隠す */
+    margin-bottom: 15px;
+}
+.work-media-box iframe,
+.work-media-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* アスペクト比を保ったまま枠内に収める */
+}
         .works-section { background-color: #fff; }
         .compare-box {
             display: flex;
@@ -416,7 +433,8 @@
                         武器①：集客動画
                     </div>
                     <h3 style="margin-bottom:15px; font-size:1.3rem;">3秒で足を止める<br>「図解アニメーション」</h3>
-                    <iframe width="300" src="https://www.youtube.com/embed/eDYESyfA44A?si=nfwfxoUfLI1ZX-9f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="work-media-box">
+                    <frame width="100%" height="100%" src="https://www.youtube.com/embed/eDYESyfA44A?si=nfwfxoUfLI1ZX-9f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                     <p style="margin-top:15px; font-size:0.9rem; color:#666;">
                         騒がしい会場でも、音なしで内容が伝わるモーショングラフィックス。3Dよりも「メリット」が脳に刺さります。
@@ -428,9 +446,10 @@
                         武器②：マンガ資料
                     </div>
                     <h3 style="margin-bottom:15px; font-size:1.3rem;">捨てられない<br>「コミック形式チラシ」</h3>
+                    <div class="work-media-box">
                     <div style="background:#f4f4f4; height:200px; display:flex; align-items:center; justify-content:center; color:#888; border:2px dashed #ccc; border-radius:4px;">
-                        <img src="works_sample.png" alt="マンガチラシ サンプル" style="max-height:100%;">
-                        </div>
+                        <img src="works_sample.png" alt="マンガチラシ サンプル">
+                        </div></div>
                     <p style="margin-top:15px; font-size:0.9rem; color:#666;">
                         文字だけのパンフは捨てられますが、マンガは「面白い」と持ち帰られます。帰国後の社内稟議でも強力な武器になります。
                     </p>
