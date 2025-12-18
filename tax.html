@@ -4,22 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>運送・建設業向け 手取り最大化プロジェクト</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- カラー定義 --- */
+        :root {
+            --main-color: #002a5b; /* 深みのあるネイビー */
+            --accent-color: #c4a300; /* 落ち着いたゴールド */
+            --text-color: #333;
+            --bg-light: #f8f9fa; /* ごく薄いグレー */
+        }
+
         /* --- 基本設定 --- */
         body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            color: #333;
-            line-height: 1.8;
+            font-family: 'Noto Sans JP', sans-serif; /* フォントを変更 */
+            color: var(--text-color);
+            line-height: 1.9; /* 行間を少し広げる */
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f0f2f5;
+            -webkit-font-smoothing: antialiased; /* 文字を滑らかに */
         }
         .container {
-            max-width: 800px;
+            max-width: 960px; /* PC幅を少し広げてゆとりを持たせる */
             margin: 0 auto;
             background-color: #fff;
             padding: 0;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05); /* 影を柔らかく */
         }
         img {
             max-width: 100%;
@@ -30,94 +43,137 @@
         h1, h2, h3 {
             margin: 0;
             padding: 0;
-            font-weight: bold;
+            font-weight: 700;
+            line-height: 1.4;
         }
         p {
-            margin-bottom: 1.5em;
+            margin-bottom: 1.8em;
         }
+        
+        /* --- コンテンツ共通 --- */
+        .section {
+            padding: 80px 30px; /* 余白を大幅に広げる */
+            border-bottom: none; /* ボーダーを廃止 */
+        }
+        .section:nth-child(even) {
+            background-color: var(--bg-light); /* 交互に背景色を変える */
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--main-color);
+            position: relative;
+        }
+        /* 下線を廃止し、シンプルなデザインへ */
         
         /* --- ヘッダー (FV) --- */
         .header {
-            background-color: #0044cc; /* 信頼感のある青 */
+            position: relative;
+            background-image: url('headtax.jpg'); /* 指定の画像 */
+            background-size: cover;
+            background-position: center;
             color: #fff;
-            padding: 40px 20px;
+            padding: 100px 20px 80px; /* 上下の余白を広げる */
             text-align: center;
+            overflow: hidden;
+        }
+        /* 背景画像の上に暗いフィルターをかける */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 15, 40, 0.7); /* 濃いネイビーのフィルター */
+            z-index: 1;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2; /* 文字をフィルターの上に */
         }
         .header-sub {
-            font-size: 1rem;
-            margin-bottom: 10px;
-            background-color: #ffcc00;
-            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            background-color: var(--accent-color);
+            color: #fff;
             display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
         }
         .header-main {
-            font-size: 1.8rem;
-            line-height: 1.4;
-            margin-bottom: 20px;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         .header-copy {
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-top: 1px solid rgba(255,255,255,0.3);
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding: 15px 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-top: 2px solid rgba(255,255,255,0.5);
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+            padding: 20px 0;
             display: inline-block;
+            margin-bottom: 30px;
         }
 
         /* --- 漫画セクション --- */
         .manga-section {
-            padding: 0;
-            background-color: #000; /* 漫画が映えるように黒背景などお好みで */
+            padding: 60px 0; /* 上下に余白を入れる */
+            background-color: #e9ecef; /* 背景色を少し濃く */
+        }
+        .manga-section img {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* 漫画を浮かび上がらせる */
+            max-width: 90%; /* 少し小さくして高級感を出す */
         }
 
-        /* --- コンテンツ共通 --- */
-        .section {
-            padding: 40px 20px;
-            border-bottom: 1px solid #eee;
-        }
-        .section-title {
-            font-size: 1.6rem;
+        /* --- 問題提起の強調 --- */
+        .problem-highlight {
+            background: #fff;
+            border-left: 5px solid var(--accent-color);
+            padding: 30px;
             text-align: center;
-            margin-bottom: 30px;
-            color: #0044cc;
-            position: relative;
-        }
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: #ffcc00;
-            margin: 15px auto 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 30px 0;
         }
         
         /* --- 解決策（3つの柱） --- */
         .solution-box {
-            background-color: #f9f9ff;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 20px;
+            background-color: #fff;
+            /* borderを廃止し、リッチなシャドウへ */
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        .solution-box:hover {
+            transform: translateY(-5px); /* ホバー時に少し浮く */
         }
         .solution-head {
-            color: #d60000;
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 10px;
+            color: var(--main-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 15px;
         }
         .solution-head::before {
-            content: "CHECK";
-            background: #d60000;
+            content: "POINT"; /* テキストを変更 */
+            background: var(--main-color);
             color: #fff;
             font-size: 0.8rem;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-right: 10px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-right: 15px;
         }
 
         /* --- プロフィール --- */
@@ -125,19 +181,20 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            background-color: #fdfdfd;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            padding: 40px;
+            border-radius: 15px;
         }
         .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+            width: 140px;
+            height: 140px;
+            border-radius: 10%;
             object-fit: cover;
-            margin-right: 20px;
-            border: 3px solid #eee;
-            margin-bottom: 10px;
+            margin-right: 40px;
+            border: 5px solid var(--bg-light);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
         .profile-text {
             flex: 1;
@@ -145,52 +202,82 @@
 
         /* --- CTA (オファー) --- */
         .cta-section {
-            background-color: #fffae6; /* 目立つ薄い黄色 */
+            background: linear-gradient(135deg, #003399, #002a5b); /* グラデーション背景 */
+            color: #fff;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 30px;
         }
         .cta-title {
-            color: #d60000;
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 20px;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .cta-text {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
         }
         .btn {
             display: block;
             width: 100%;
-            max-width: 400px;
-            margin: 15px auto;
-            padding: 20px;
+            max-width: 420px;
+            margin: 20px auto;
+            padding: 25px;
             text-align: center;
             text-decoration: none;
             color: #fff;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 50px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            transition: opacity 0.3s;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 60px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
         .btn:hover {
-            opacity: 0.9;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.3);
         }
+        /* ボタンに光沢感を追加 */
+        .btn::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to bottom right, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%);
+            transform: rotate(30deg);
+        }
+
         .btn-line {
             background-color: #06C755; /* LINEグリーン */
         }
         .btn-form {
-            background-color: #0044cc; /* フォーム用ブルー */
+            background-color: #fff; /* フォーム用は白背景に */
+            color: var(--main-color); /* 文字を青に */
         }
         .micro-copy {
             font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 8px;
+            font-weight: normal;
+        }
+        .btn-form .micro-copy {
             color: #666;
-            margin-top: 5px;
         }
 
         /* スマホ用調整 */
         @media (max-width: 600px) {
-            .header-main { font-size: 1.5rem; }
-            .section-title { font-size: 1.4rem; }
-            .profile-box { text-align: center; display: block; }
-            .profile-img { margin: 0 auto 15px; }
+            .header-main { font-size: 1.8rem; }
+            .header-copy { font-size: 1.1rem; }
+            .section { padding: 60px 20px; }
+            .section-title { font-size: 1.6rem; margin-bottom: 30px; }
+            .solution-box { padding: 30px 20px; }
+            .profile-box { padding: 30px 20px; text-align: center; display: block; }
+            .profile-img { margin: 0 auto 25px; }
+            .btn { font-size: 1.1rem; padding: 20px; }
+            .manga-section img { max-width: 100%; box-shadow: none; } /* スマホでは漫画を最大幅に */
         }
     </style>
 </head>
@@ -199,22 +286,24 @@
 <div class="container">
 
     <header class="header">
-        <div class="header-sub">運送業・建設業の経営者様へ</div>
-        <h1 class="header-main">
-            その長距離移動、<br>
-            まだ「ただの経費」に<br>していませんか？
-        </h1>
-        <div class="header-copy">
-            「旅費規程」で、消えていく利益を<br>
-            「社長と社員の手取り」に変える方法
+        <div class="header-content">
+            <div class="header-sub">運送業・建設業の経営者様へ</div>
+            <h1 class="header-main">
+                その長距離移動、<br>
+                まだ「ただの経費」に<br>していませんか？
+            </h1>
+            <div class="header-copy">
+                「旅費規程」で、消えていく利益を<br>
+                「社長と社員の手取り」に変える方法
+            </div>
+            <p style="margin-top:30px; font-size:1rem; font-weight:bold;">
+                中小企業診断士監修・適法スキーム公開
+            </p>
         </div>
-        <p style="margin-top:20px; font-size:0.9rem;">
-            中小企業診断士監修・適法スキーム公開
-        </p>
     </header>
 
     <section class="manga-section">
-        <img src="lpmanga.jpg" alt="節税漫画">
+        <img src="manga_tax.jpg" alt="節税と手取り最大化の漫画">
     </section>
 
     <section class="section">
@@ -227,11 +316,12 @@
         <p>
             しかし、単純に給料（額面）を上げると、会社負担の<strong>「社会保険料」</strong>は跳ね上がり、社員側も<strong>「税金・社会保険料」</strong>が増えるため、手取りは思ったほど増えません。
         </p>
-        <div style="background:#eee; padding:15px; text-align:center; font-weight:bold;">
-            会社はコスト増で苦しみ、<br>社員は手取りが増えず不満を持つ。
+        <div class="problem-highlight">
+            会社はコスト増で苦しみ、<br>社員は手取りが増えず不満を持つ。<br>
+            この悪循環に陥っていませんか？
         </div>
-        <p style="margin-top:20px;">
-            この悪循環を断ち切るのが、私たちのご提案する<strong>「3つの手取り最大化スキーム」</strong>です。
+        <p style="margin-top:30px; text-align:center; font-size:1.1rem;">
+            この問題を断ち切るのが、私たちのご提案する<br><strong>「3つの手取り最大化スキーム」</strong>です。
         </p>
     </section>
 
@@ -245,9 +335,9 @@
             <p>
                 運送業・建設業の最大の強みは「現場への移動」です。適切な<strong>「旅費規程」</strong>を導入することで、日々の移動に対して「出張手当（日当）」を支給できます。
             </p>
-            <ul>
-                <li><strong>会社：</strong>全額経費になり節税＆社保削減</li>
-                <li><strong>個人：</strong>所得税・住民税・社保が<strong>一切かかりません</strong></li>
+            <ul style="padding-left:20px; font-weight:bold; color:var(--main-color);">
+                <li>会社メリット：全額経費になり節税＆社保削減</li>
+                <li style="margin-top:10px;">個人メリット：所得税・住民税・社保が一切かかりません</li>
             </ul>
         </div>
 
@@ -284,14 +374,14 @@
             「適法性」と「経営視点」を<br>重視します
         </h2>
         <div class="profile-box">
-            <img src="profile.jpg" alt="プロフィール写真" class="profile-img">
+            <img src="profile.png" alt="プロフィール写真" class="profile-img">
             <div class="profile-text">
-                <strong>監修・提案：[あなたのお名前]</strong><br>
-                <span style="font-size:0.85rem; color:#666;">中小企業診断士 / 2級FP技能士</span>
-                <p style="margin-top:10px; font-size:0.9rem;">
+                <strong style="font-size:1.2rem; color:var(--main-color);">監修・提案：[あなたのお名前]</strong><br>
+                <span style="font-size:0.9rem; color:#666; font-weight:bold;">中小企業診断士 / 2級FP技能士</span>
+                <p style="margin-top:20px;">
                     私は「ただ税金を減らす」だけの提案はいたしません。「会社にお金を残し、それを人材投資に回して事業を成長させる」ための財務戦略をご提案します。
                 </p>
-                <p style="font-size:0.9rem; color:#d60000; font-weight:bold;">
+                <p style="font-size:0.95rem; color:#d60000; font-weight:bold; background:#fff0f0; padding:10px; border-radius:5px;">
                     ※提携税理士法人による適法な設計・税務判断を行いますのでご安心ください。
                 </p>
             </div>
@@ -302,23 +392,23 @@
         <h2 class="cta-title">
             まずは「いくら手残りが増えるか」<br>無料シミュレーション
         </h2>
-        <p>
+        <p class="cta-text">
             御社の「車両台数」「従業員数」「だいたいの移動距離」を教えていただくだけで、
             <strong>「年間でいくら税金が減り、いくら個人の手取りが増えるか」</strong>の概算を無料で試算いたします。
         </p>
 
-        <a href="【あなたのLINE公式アカウントのURL】" class="btn btn-line">
+        <a href="【LINE公式アカウントのURL】" class="btn btn-line">
             LINEで無料シミュレーション ＞
             <div class="micro-copy">※サクッと30秒で相談。面倒な入力はありません</div>
         </a>
 
-        <a href="【作成したGoogleフォームのURL】" class="btn btn-form">
+        <a href="【GoogleフォームのURL】" class="btn btn-form">
             LINEをやっていない方はこちら ＞
             <div class="micro-copy">※メールでのご案内になります</div>
         </a>
     </section>
 
-    <footer style="background:#333; color:#fff; text-align:center; padding:20px; font-size:0.8rem;">
+    <footer style="background:var(--main-color); color:#fff; text-align:center; padding:30px 20px; font-size:0.9rem;">
         &copy; 2025 [あなたの屋号・会社名]. All Rights Reserved.
     </footer>
 
