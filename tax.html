@@ -291,32 +291,61 @@
             top: 10px;
             left: 10px;
         }
+/* --- プロフィール修正版 --- */
+.profile-box {
+    display: flex;
+    flex-wrap: nowrap; /* スマホでも横並びを維持したい場合はnowrap、崩すならwrap */
+    align-items: flex-start; /* 上揃えにする（画像と文章の頭を合わせる） */
+    background-color: #fff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-        /* --- プロフィール --- */
-        .profile-box {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            background-color: #fff;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 15px; 
-            object-fit: cover;
-            margin-right: 40px;
-            border: 5px solid var(--bg-light);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .profile-text {
-            flex: 1;
-        }
+.profile-img {
+    width: 110px; /* 幅を少しスリムに */
+    height: auto; /* 高さは自動（元の縦長比率を維持） */
+    border-radius: 8px; /* 丸すぎない角丸に */
+    margin-right: 30px; /* 文章との間隔 */
+    border: 3px solid var(--bg-light);
+    flex-shrink: 0; /* 画像が潰れないようにする */
+}
+
+.profile-text {
+    flex: 1;
+}
+
+/* 名前画像（name.jpg）やお名前テキストの左寄せ設定 */
+.profile-name-area {
+    margin-bottom: 15px;
+    text-align: left; /* 強制的に左寄せ */
+}
+.profile-name-area img {
+    margin: 0; /* 画像の中央寄せを打ち消して左に置く */
+    display: block; /* ブロック要素にして安定させる */
+    max-width: 200px; /* 名前画像がデカすぎないように制限 */
+}
+
+/* スマホ用調整 */
+@media (max-width: 600px) {
+    .profile-box { 
+        display: block; /* スマホでは縦積みに戻す */
+        text-align: center; 
+        padding: 30px 20px;
+    }
+    .profile-img { 
+        margin: 0 auto 20px; /* スマホの時だけ中央に戻す */
+        width: 100px; 
+    }
+    .profile-name-area {
+        text-align: center; /* スマホでは名前も中央が見やすい */
+    }
+    .profile-name-area img {
+        margin: 0 auto; /* スマホでは中央寄せ */
+    }
+}
 
         /* --- CTA (オファー) --- */
         .cta-section {
@@ -543,27 +572,38 @@
         </p>
     </section>
 
-    <section class="section">
-        <h2 class="section-title">
-            <span class="material-icons-round">gavel</span>
-            「適法性」と「経営視点」を<br>重視します
-        </h2>
-        <div class="profile-box">
-            <img src="profile.png" alt="プロフィール写真">
-            <div class="profile-text">
-                <img src="name.jpg"><br>
-                <span style="font-size:0.9rem; color:#666; font-weight:bold;">中小企業診断士 / 2級FP技能士</span>
-                <p style="margin-top:20px;">
-                    私は「ただ税金を減らす」だけの提案はいたしません。「会社にお金を残し、それを人材投資に回して事業を成長させる」ための財務戦略をご提案します。
+   <section class="section">
+    <h2 class="section-title">
+        <span class="material-icons-round">gavel</span>
+        「適法性」と「経営視点」を<br>重視します
+    </h2>
+    <div class="profile-box">
+        <img src="https://github.com/MachikaHub/machikahub.github.io/blob/main/profile.png?raw=true" alt="プロフィール写真" class="profile-img">
+        
+        <div class="profile-text">
+            <div class="profile-name-area">
+                <span style="font-size:0.9rem; color:#666; font-weight:bold; display:block; margin-bottom:5px;">監修・提案：</span>
+                <img src="name.jpg" alt="お名前">
+                </div>
+
+            <span style="font-size:0.9rem; color:#666; font-weight:bold; display:block; margin-bottom:15px;">中小企業診断士 / 2級FP技能士</span>
+            
+            <p style="margin-top:0;">
+                私は「ただ税金を減らす」だけの提案はいたしません。「会社にお金を残し、それを人材投資に回して事業を成長させる」ための財務戦略をご提案します。
+            </p>
+            
+            <div style="background:#fff0f0; padding:15px; border-radius:10px; margin-top:20px;">
+                <p style="font-size:0.95rem; color:var(--highlight-red); font-weight:bold; margin-bottom:5px;">
+                    ※提携税理士法人による適法な設計・税務判断を行いますのでご安心ください。
                 </p>
-                <p style="font-size:0.95rem; color:var(--highlight-red); font-weight:bold; background:#fff0f0; padding:10px; border-radius:5px;">
-                    ※提携税理士法人による適法な設計・税務判断を行いますのでご安心ください。<br>
+                <p style="font-size:0.8rem; color:#666; font-weight:normal; margin-bottom:0;">
                     ※旅費日当の支給額は社会通念上妥当な範囲で設定する必要があります。<br>
                     ※社宅の経費化率は物件や契約内容により異なります（約50〜85%程度）。
                 </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="cta-section" id="contact">
         <h2 class="cta-title">
