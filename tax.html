@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>運送・建設業向け 手取り最大化プロジェクト</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     
     <style>
         /* --- カラー定義 --- */
@@ -22,7 +25,7 @@
         body {
             font-family: 'Noto Sans JP', sans-serif;
             color: var(--text-color);
-            line-height: 1.9;
+            line-height: 2.0; /* 読みやすく行間を広めに */
             margin: 0;
             padding: 0;
             background-color: #f0f2f5;
@@ -47,9 +50,23 @@
             font-weight: 700;
             line-height: 1.4;
         }
+        
+        /* 文章の横幅制限（読みやすくする調整） */
         p {
             margin-bottom: 1.8em;
+            max-width: 720px; /* 一行が長くなりすぎないように制限 */
+            margin-left: auto; /* 中央寄せ */
+            margin-right: auto; /* 中央寄せ */
         }
+        
+        /* アイコンの調整 */
+        .material-icons-round {
+            vertical-align: middle;
+            margin-right: 5px;
+            position: relative;
+            top: -2px;
+        }
+        .icon-lg { font-size: 1.4em; }
         
         /* --- コンテンツ共通 --- */
         .section {
@@ -64,12 +81,20 @@
             margin-bottom: 50px;
             color: var(--main-color);
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .section-title span.material-icons-round {
+            font-size: 1.2em;
+            color: var(--accent-color);
         }
         
         /* --- ヘッダー (FV) --- */
         .header {
             position: relative;
-            background-image: url('headtax.jpg'); /* 背景画像 */
+            background-image: url('headtax.jpg');
             background-size: cover;
             background-position: center;
             color: #fff;
@@ -84,7 +109,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 15, 40, 0.65); /* フィルター */
+            background: rgba(0, 15, 40, 0.65);
             z-index: 1;
         }
         .header-content {
@@ -131,13 +156,14 @@
         /* --- 問題提起 --- */
         .problem-highlight {
             background: #fff;
-            border-left: 5px solid var(--accent-color);
+            border-left: 6px solid var(--accent-color);
             padding: 30px;
             text-align: center;
             font-weight: 700;
             font-size: 1.2rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin: 30px 0;
+            margin: 30px auto;
+            max-width: 720px;
         }
         
         /* --- 解決策（3つの柱） --- */
@@ -148,6 +174,9 @@
             margin-bottom: 30px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             transition: transform 0.3s;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .solution-box:hover {
             transform: translateY(-5px);
@@ -162,17 +191,16 @@
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 15px;
         }
-        .solution-head::before {
-            content: "POINT";
-            background: var(--main-color);
-            color: #fff;
-            font-size: 0.8rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-right: 15px;
+        .solution-head .material-icons-round {
+            color: var(--main-color);
+            font-size: 1.4em;
+            margin-right: 10px;
+            background: #eef4ff;
+            padding: 8px;
+            border-radius: 50%;
         }
 
-        /* --- 事例セクション（NEW） --- */
+        /* --- 事例セクション --- */
         .case-box {
             background: #f0f8ff;
             border: 2px solid var(--main-color);
@@ -181,6 +209,17 @@
             max-width: 760px;
             margin: 0 auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .case-box::after {
+            content: "analytics";
+            font-family: 'Material Icons Round';
+            font-size: 100px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: rgba(0, 42, 91, 0.05);
+            pointer-events: none;
         }
         .case-badge {
             background: var(--main-color);
@@ -219,6 +258,10 @@
             font-weight: bold;
             color: #666;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
         .case-number {
             font-size: 2.2rem;
@@ -237,6 +280,16 @@
             border-radius: 10px;
             font-size: 0.95rem;
             line-height: 1.8;
+            position: relative;
+        }
+        .case-comment::before {
+            content: "format_quote";
+            font-family: 'Material Icons Round';
+            font-size: 2rem;
+            color: #ddd;
+            position: absolute;
+            top: 10px;
+            left: 10px;
         }
 
         /* --- プロフィール --- */
@@ -248,11 +301,12 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             padding: 40px;
             border-radius: 15px;
+            max-width: 800px;
+            margin: 0 auto;
         }
         .profile-img {
             width: 140px;
             height: 140px;
-            /* 角を少し丸める程度に変更（お好みで50%に戻してください） */
             border-radius: 15px; 
             object-fit: cover;
             margin-right: 40px;
@@ -276,13 +330,25 @@
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
         }
+        .cta-title .material-icons-round { color: #ffcc00; }
         .cta-text {
-            color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,0.95);
             margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .btn {
-            display: block;
+            display: flex;
+            flex-wrap: wrap; /* 改行用 */
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             width: 100%;
             max-width: 420px;
             margin: 20px auto;
@@ -317,8 +383,9 @@
         .micro-copy {
             font-size: 0.9rem;
             opacity: 0.9;
-            margin-top: 8px;
+            margin-top: 5px;
             font-weight: normal;
+            flex-basis: 100%; /* 強制的に改行させる */
         }
         .btn-form .micro-copy { color: #666; }
 
@@ -327,7 +394,7 @@
             .header-main { font-size: 1.8rem; }
             .header-copy { font-size: 1.1rem; }
             .section { padding: 60px 20px; }
-            .section-title { font-size: 1.6rem; margin-bottom: 30px; }
+            .section-title { font-size: 1.6rem; margin-bottom: 30px; flex-direction: column;}
             .solution-box { padding: 30px 20px; }
             .case-box { padding: 25px 20px; }
             .case-item { min-width: 100%; margin-bottom: 15px; }
@@ -353,18 +420,20 @@
                 「旅費規程」で、消えていく利益を<br>
                 「社長と社員の手取り」に変える方法
             </div>
-            <p style="margin-top:30px; font-size:1rem; font-weight:bold;">
+            <p style="margin-top:30px; font-size:1rem; font-weight:bold; display:flex; align-items:center; justify-content:center; gap:5px;">
+                <span class="material-icons-round">verified_user</span>
                 中小企業診断士監修・適法スキーム公開
             </p>
         </div>
     </header>
 
     <section class="manga-section">
-        <img src="lpmanga.jpg" alt="節税と手取り最大化の漫画">
+        <img src="LP漫画（節税）.jpg" alt="節税と手取り最大化の漫画">
     </section>
 
     <section class="section">
         <h2 class="section-title">
+            <span class="material-icons-round">error_outline</span>
             「給料を上げれば人が来る」<br>と思っていませんか？
         </h2>
         <p>
@@ -374,6 +443,7 @@
             しかし、単純に給料（額面）を上げると、会社負担の<strong>「社会保険料」</strong>は跳ね上がり、社員側も<strong>「税金・社会保険料」</strong>が増えるため、手取りは思ったほど増えません。
         </p>
         <div class="problem-highlight">
+            <div style="margin-bottom:10px;"><span class="material-icons-round" style="color:#d60000; font-size:2rem;">warning</span></div>
             会社はコスト増で苦しみ、<br>社員は手取りが増えず不満を持つ。<br>
             この悪循環に陥っていませんか？
         </div>
@@ -384,11 +454,15 @@
 
     <section class="section">
         <h2 class="section-title">
+            <span class="material-icons-round">auto_awesome</span>
             トラックが走れば走るほど、<br>手取りが増える魔法とは？
         </h2>
 
         <div class="solution-box">
-            <div class="solution-head">① 移動を「非課税の現金」に</div>
+            <div class="solution-head">
+                <span class="material-icons-round">local_shipping</span>
+                ① 移動を「非課税の現金」に
+            </div>
             <p>
                 運送業・建設業の最大の強みは「現場への移動」です。適切な<strong>「旅費規程」</strong>を導入することで、日々の移動に対して「出張手当（日当）」を支給できます。
             </p>
@@ -399,14 +473,20 @@
         </div>
 
         <div class="solution-box">
-            <div class="solution-head">② 家賃の約8割を経費化</div>
+            <div class="solution-head">
+                <span class="material-icons-round">apartment</span>
+                ② 家賃の約8割を経費化
+            </div>
             <p>
                 社長や役員の自宅を「会社名義」で契約し直す<strong>「借上社宅」</strong>を活用します。個人の給与から家賃を払うよりも、税金と社会保険料を大幅に圧縮できます。
             </p>
         </div>
 
         <div class="solution-box">
-            <div class="solution-head">③ 役員報酬の最適化</div>
+            <div class="solution-head">
+                <span class="material-icons-round">manage_accounts</span>
+                ③ 役員報酬の最適化
+            </div>
             <p>
                 上記の①②を組み合わせることで、<strong>「額面年収」を下げつつ「実質手取り」を増やす</strong>ことが可能です。社会保険料の等級（ランク）を適正化し、年間数百万円単位のコストカットを実現します。
             </p>
@@ -415,6 +495,7 @@
 
     <section class="section" style="background-color:#fff;">
         <h2 class="section-title">
+            <span class="material-icons-round">trending_up</span>
             「うちは規模が小さいから…」<br>
             そう思う会社ほど効果絶大です
         </h2>
@@ -431,7 +512,10 @@
 
             <div class="case-grid">
                 <div class="case-item">
-                    <div class="case-label">社長個人の手取り額</div>
+                    <div class="case-label">
+                        <span class="material-icons-round">account_balance_wallet</span>
+                        社長個人の手取り額
+                    </div>
                     <div class="case-number" style="color:var(--highlight-red);">
                         <span>年間</span> +124<span>万円</span><br>
                         <span style="font-size:1.2rem; background:var(--highlight-red); color:#fff; padding:2px 10px; border-radius:5px;">UP!</span>
@@ -442,7 +526,10 @@
                 </div>
 
                 <div class="case-item">
-                    <div class="case-label">会社負担の社会保険料</div>
+                    <div class="case-label">
+                        <span class="material-icons-round">domain</span>
+                        会社負担の社会保険料
+                    </div>
                     <div class="case-number" style="color:var(--main-color);">
                         <span>年間</span> -58<span>万円</span><br>
                         <span style="font-size:1.2rem; background:var(--main-color); color:#fff; padding:2px 10px; border-radius:5px;">削減!</span>
@@ -454,7 +541,7 @@
             </div>
 
             <div class="case-comment">
-                <p style="margin-bottom:0;">
+                <p style="margin-bottom:0; padding-left:20px;">
                     <strong>【診断士のコメント】</strong><br>
                     たったトラック3台の稼働でも、旅費規程による日当（非課税）の積み上げと、社長の社宅化を組み合わせることで、<strong>年間180万円以上の経済効果</strong>が生まれました。
                     浮いたお金で「ドライバーへの決算賞与」を出し、離職防止に繋げています。
@@ -465,6 +552,7 @@
 
     <section class="section">
         <h2 class="section-title">
+            <span class="material-icons-round">groups</span>
             浮いた税金で<br>「選ばれる会社」へ
         </h2>
         <p>
@@ -478,10 +566,11 @@
 
     <section class="section">
         <h2 class="section-title">
+            <span class="material-icons-round">gavel</span>
             「適法性」と「経営視点」を<br>重視します
         </h2>
         <div class="profile-box">
-            <img src="profile.png" alt="プロフィール写真" class="profile-img">
+            <img src="https://github.com/MachikaHub/machikahub.github.io/blob/main/profile.png?raw=true" alt="プロフィール写真" class="profile-img">
             <div class="profile-text">
                 <strong style="font-size:1.2rem; color:var(--main-color);">監修・提案：[あなたのお名前]</strong><br>
                 <span style="font-size:0.9rem; color:#666; font-weight:bold;">中小企業診断士 / 2級FP技能士</span>
@@ -489,37 +578,4 @@
                     私は「ただ税金を減らす」だけの提案はいたしません。「会社にお金を残し、それを人材投資に回して事業を成長させる」ための財務戦略をご提案します。
                 </p>
                 <p style="font-size:0.95rem; color:var(--highlight-red); font-weight:bold; background:#fff0f0; padding:10px; border-radius:5px;">
-                    ※提携税理士法人による適法な設計・税務判断を行いますのでご安心ください。
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section" id="contact">
-        <h2 class="cta-title">
-            まずは「いくら手残りが増えるか」<br>無料シミュレーション
-        </h2>
-        <p class="cta-text">
-            御社の「車両台数」「従業員数」「だいたいの移動距離」を教えていただくだけで、
-            <strong>「年間でいくら税金が減り、いくら個人の手取りが増えるか」</strong>の概算を無料で試算いたします。
-        </p>
-
-        <a href="https://lin.ee/3ThqYBl" class="btn btn-line">
-            LINEで無料シミュレーション ＞
-            <div class="micro-copy">※サクッと30秒で。「無料相談」とメッセージください。</div>
-        </a>
-
-        <a href="https://forms.gle/pukKnizQtpJ2RXyu6" class="btn btn-form">
-            LINEをやっていない方はこちら ＞
-            <div class="micro-copy">※メールでのご案内になります</div>
-        </a>
-    </section>
-
-    <footer style="background:var(--main-color); color:#fff; text-align:center; padding:30px 20px; font-size:0.9rem;">
-        &copy; 2025 MACHIKA. All Rights Reserved.
-    </footer>
-
-</div>
-
-</body>
-</html>
+                    ※提携税理士法人による適法な設計・税務判断を行いますのでご
