@@ -4,300 +4,277 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>合同会社MACHIKA | 海外展示会・動画商談支援</title>
-    <meta name="description" content="海外商談の成否を「個人の英語力」に依存させない。展示会の商談品質を「動画」で均一化する営業支援ツール。補助金活用でコストを抑えた導入を支援します。">
+    <meta name="description" content="海外商談の成否を個人の英語力に依存させない。展示会の商談品質を「動画」で均一化する営業支援ツール。">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        /* --- Base Styles --- */
+        /* =========================================
+           基本設定 (LPのデザインベース)
+           ========================================= */
         :root {
-            --primary-color: #0b2c4e; /* 信頼感のあるネイビー */
-            --accent-color: #c99a2c;  /* 高級感・注意を引くゴールド/黄土色 */
-            --text-color: #333;
-            --bg-light: #f4f7f9;
+            --primary: #0b2c4e; /* ネイビー */
+            --accent: #c99a2c;  /* ゴールド */
+            --text: #333333;
+            --bg-light: #f9f9f9;
             --white: #ffffff;
         }
 
         body {
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            color: var(--text-color);
-            line-height: 1.6;
+            color: var(--text);
+            line-height: 1.8;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        a:hover { opacity: 0.7; }
-        ul { list-style: none; padding: 0; }
-        img { max-width: 100%; height: auto; }
+        h1, h2, h3 { margin: 0; font-weight: bold; }
+        a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
+        a:hover { opacity: 0.8; }
+        img { max-width: 100%; height: auto; display: block; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .text-center { text-align: center; }
+        .bold { font-weight: bold; }
+        .red { color: #d9534f; }
         
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
+        /* ボタン共通スタイル */
         .btn {
             display: inline-block;
-            padding: 15px 40px;
+            padding: 16px 40px;
             border-radius: 50px;
             font-weight: bold;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin: 20px 0;
         }
-        .btn-primary {
-            background-color: var(--accent-color);
+        .btn-gold {
+            background-color: var(--accent);
             color: var(--white);
             font-size: 1.2rem;
         }
         .btn-line {
             background-color: #06c755;
             color: var(--white);
+            font-size: 1rem;
         }
 
-        /* --- Header (Existing Style) --- */
+        /* =========================================
+           ヘッダー (Top Page Style)
+           ========================================= */
         header {
             background-color: var(--white);
+            height: 70px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
         }
         .header-inner {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
         }
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--primary);
+            letter-spacing: 1px;
         }
         .nav-menu {
             display: flex;
-            gap: 20px;
+            list-style: none;
+            gap: 25px;
+            margin: 0;
         }
         .nav-menu li a {
             font-size: 0.9rem;
+            color: var(--primary);
             font-weight: bold;
-            color: var(--primary-color);
         }
+        /* スマホ用簡易レスポンシブ */
         @media (max-width: 768px) {
-            .nav-menu { display: none; } /* Mobile menu simplified for this code */
+            .nav-menu { display: none; } /* ハンバーガーメニューは省略 */
+            .logo { font-size: 1.2rem; }
         }
 
-        /* --- Hero Section --- */
+        /* =========================================
+           メインコンテンツ (LP Updated Content)
+           ========================================= */
+        
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(11, 44, 78, 0.8), rgba(11, 44, 78, 0.8)), url('hero.jpg'); /* 背景画像を指定 */
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(11,44,78,0.85), rgba(11,44,78,0.7)), url('hero.jpg') center/cover;
             color: var(--white);
-            padding: 100px 0;
+            padding: 100px 0 80px;
             text-align: center;
         }
         .hero-tag {
-            background-color: var(--accent-color);
-            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
             padding: 5px 15px;
             font-size: 0.9rem;
+            display: inline-block;
             margin-bottom: 20px;
-            font-weight: bold;
         }
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2.4rem;
             line-height: 1.4;
+            margin-bottom: 20px;
         }
         .hero p {
             font-size: 1.1rem;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        /* --- Sections Common --- */
+        /* Section Common */
         section { padding: 80px 0; }
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        .section-title span {
-            color: var(--accent-color);
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .section-head { text-align: center; margin-bottom: 50px; }
+        .section-en { color: var(--accent); font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .section-jp { font-size: 2rem; color: var(--primary); }
+        .section-desc { margin-top: 15px; font-size: 1rem; }
 
-        /* --- Problem --- */
-        .problem { background-color: var(--bg-light); }
-        .problem-list {
+        /* Problem */
+        .problem { background-color: #f4f7f9; }
+        .problem-box {
             background: var(--white);
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        .problem-list li {
-            margin-bottom: 15px;
-            padding-left: 25px;
             position: relative;
+        }
+        .check-list {
+            list-style: none;
+            padding: 0;
             font-size: 1.1rem;
         }
-        .problem-list li::before {
+        .check-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 15px;
+        }
+        .check-list li:last-child { border: none; }
+        .check-list li::before {
             content: "✔";
-            color: #d9534f;
             position: absolute;
             left: 0;
+            top: 0;
+            color: #d9534f;
             font-weight: bold;
+            font-size: 1.3rem;
         }
 
-        /* --- Solution --- */
+        /* Solution */
         .solution-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-        .solution-card {
-            text-align: center;
-            padding: 30px;
+        .sol-card {
             border: 1px solid #eee;
+            padding: 30px;
+            text-align: center;
             border-radius: 8px;
+            transition: 0.3s;
         }
-        .solution-card h3 {
-            color: var(--primary-color);
-            margin-top: 10px;
-        }
-        .step-num {
-            font-size: 3rem;
-            color: #e0e0e0;
-            font-weight: bold;
-            line-height: 1;
-        }
+        .sol-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .sol-icon { font-size: 40px; color: var(--accent); margin-bottom: 15px; }
+        .sol-title { color: var(--primary); font-size: 1.3rem; margin-bottom: 15px; }
+        .sol-desc { font-size: 0.95rem; text-align: left; }
 
-        /* --- Works --- */
-        .works { background-color: var(--bg-light); }
-        .works-item {
+        /* Works */
+        .works { background-color: #f4f7f9; }
+        .work-item {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 40px;
-            margin-bottom: 60px;
             background: var(--white);
-            padding: 40px;
+            margin-bottom: 50px;
             border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
         }
-        .works-content { flex: 1; }
-        .works-image { flex: 1; text-align: center; }
-        .works-image img { border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .works-h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--accent-color);
-            display: inline-block;
-            margin-bottom: 20px;
-        }
+        .work-text { flex: 1; padding: 40px; }
+        .work-img { flex: 1; min-height: 300px; background-color: #eee; display: flex; align-items: center; justify-content: center; }
+        .work-badge { color: var(--accent); font-weight: bold; display: block; margin-bottom: 10px; }
+        .work-h3 { font-size: 1.6rem; color: var(--primary); margin-bottom: 20px; border-bottom: 3px solid var(--accent); display: inline-block; }
 
-        /* --- Plan (Pricing) --- */
-        .price-table {
+        /* Plan */
+        .plan-table {
             width: 100%;
             border-collapse: collapse;
             background: var(--white);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        .price-table th, .price-table td {
-            padding: 20px;
-            border: 1px solid #eee;
-            text-align: left;
-        }
-        .price-table th {
-            background-color: var(--primary-color);
-            color: var(--white);
-            width: 30%;
-        }
-        .price-highlight {
-            background-color: #fff9e6;
-            border: 2px solid var(--accent-color);
-        }
-        .price-highlight th {
-            background-color: var(--accent-color);
-        }
-        .real-cost {
-            display: block;
-            color: #d9534f;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 5px;
+        .plan-table th, .plan-table td { padding: 25px; border: 1px solid #e0e0e0; }
+        .plan-table th { background: var(--primary); color: var(--white); width: 30%; text-align: center; vertical-align: middle; }
+        .plan-rec { border: 3px solid var(--accent); position: relative; }
+        .plan-rec th { background: var(--accent); }
+        .plan-rec::after {
+            content: "おすすめ";
+            position: absolute;
+            top: -15px;
+            left: 10px;
+            background: #d9534f;
+            color: #fff;
+            padding: 2px 10px;
+            font-size: 0.8rem;
+            border-radius: 4px;
         }
 
-        /* --- Profile --- */
-        .profile-container {
+        /* Profile */
+        .profile-wrap {
             display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
             align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
         }
-        .profile-img { flex: 1; max-width: 300px; margin: 0 auto; }
-        .profile-img img { border-radius: 50%; border: 5px solid #eee; }
-        .profile-text { flex: 2; }
-        .profile-text h3 { border-left: 5px solid var(--accent-color); padding-left: 15px; }
+        .profile-pic img { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 5px solid #f0f0f0; }
+        .profile-info { flex: 1; }
+        .profile-role { color: var(--accent); font-weight: bold; display: block; margin-bottom: 10px; }
+        .profile-msg { background: #f9f9f9; padding: 20px; border-left: 5px solid var(--primary); margin-top: 20px; font-style: italic; }
 
-        /* --- CTA Area --- */
-        .cta-section {
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-align: center;
-        }
-        .cta-box {
-            background: rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 10px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* --- Footer --- */
+        /* CTA */
+        .cta { background-color: var(--primary); color: var(--white); text-align: center; }
+        .cta-content { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 40px; border-radius: 10px; }
+        
+        /* =========================================
+           フッター (Top Page Style)
+           ========================================= */
         footer {
-            background-color: #1a1a1a;
+            background-color: #222;
             color: #ccc;
-            padding: 50px 0 20px;
+            padding: 60px 0 20px;
             font-size: 0.9rem;
         }
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
         }
-        .footer-logo {
-            color: var(--white);
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: block;
-        }
-        .footer-company-info p { margin: 5px 0; }
-        .copyright {
-            text-align: center;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-        }
-
-        /* Responsive Fixes */
+        .footer-logo { font-size: 1.2rem; color: var(--white); font-weight: bold; margin-bottom: 15px; display: block; }
+        .footer-nav ul { list-style: none; padding: 0; }
+        .footer-nav li { margin-bottom: 10px; }
+        .copyright { border-top: 1px solid #444; padding-top: 20px; text-align: center; font-size: 0.8rem; }
+        
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
-            .works-item { flex-direction: column; }
-            .price-table, .price-table tbody, .price-table tr, .price-table th, .price-table td {
-                display: block;
-                width: 100%;
-            }
-            .price-table th { text-align: center; }
+            .work-item { flex-direction: column; }
+            .plan-table th, .plan-table td { display: block; width: 100%; box-sizing: border-box; }
+            .profile-wrap { text-align: center; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container header-inner">
+        <div class="header-inner">
             <a href="#" class="logo">合同会社MACHIKA</a>
             <nav>
                 <ul class="nav-menu">
@@ -306,7 +283,7 @@
                     <li><a href="#works">実績・サービス</a></li>
                     <li><a href="#plan">料金プラン</a></li>
                     <li><a href="#profile">プロフィール</a></li>
-                    <li><a href="#contact" style="color:var(--accent-color);">お問い合わせ</a></li>
+                    <li><a href="#contact" style="color:var(--accent);">お問い合わせ</a></li>
                 </ul>
             </nav>
         </div>
@@ -317,49 +294,51 @@
             <span class="hero-tag">【監修】経営コンサルタント × 海外実務経験10年</span>
             <h1>海外商談の成否を、<br>「個人の英語力」などの“運”に任せていませんか？</h1>
             <p>誰が担当しても、英語が苦手でも。<br>トップセールスの商談品質を「動画」で再現・標準化する営業支援ツール。</p>
-            <a href="#contact" class="btn btn-primary">まずは無料オンライン診断 (30分)</a>
+            <a href="#contact" class="btn btn-gold">まずは無料オンライン診断 (30分)</a>
         </div>
     </section>
 
     <section id="problem" class="problem">
         <div class="container">
-            <div class="section-title">
-                <span>Problem</span>
-                <h2>「良いものを作れば売れる」は、<br>海外では通用しません。</h2>
+            <div class="section-head">
+                <span class="section-en">Problem</span>
+                <h2 class="section-jp">「良いものを作れば売れる」は、<br>海外では通用しません。</h2>
+                <p class="section-desc">こんな課題で、せっかくの海外出展を「観光」で終わらせていませんか？</p>
             </div>
-            <p style="text-align: center; margin-bottom: 30px;">こんな課題で、せっかくの海外出展を「観光」で終わらせていませんか？</p>
-            <ul class="problem-list">
-                <li>技術のニュアンスが、拙い英語のせいで伝わっていない気がする</li>
-                <li>英語ができる社員の前にだけ行列ができ、他の社員が手持ち無沙汰になる</li>
-                <li><strong>通訳や現地スタッフに任せると、間違った説明をしていないか不安だ</strong></li>
-                <li>「詳しい資料を送って」と言われて終わるが、その後連絡が来ない</li>
-            </ul>
+            <div class="problem-box">
+                <ul class="check-list">
+                    <li>技術のニュアンスが、拙い英語のせいで伝わっていない気がする</li>
+                    <li>英語ができる社員の前にだけ行列ができ、他の社員が手持ち無沙汰になる</li>
+                    <li><strong>通訳や現地スタッフに任せると、間違った説明をしていないか不安だ</strong></li>
+                    <li>「詳しい資料を送って」と言われて終わるが、その後連絡が来ない</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <section id="solution" class="solution">
         <div class="container">
-            <div class="section-title">
-                <span>Solution</span>
-                <h2>その課題、「制作」と「戦略」のプロが<br>ワンストップで解決します。</h2>
-                <p style="font-size: 1rem; margin-top:20px;">弊社はただの動画制作会社ではありません。<br>「戦略・シナリオ・制作」の3つを同時に提供するパートナーです。</p>
+            <div class="section-head">
+                <span class="section-en">Solution</span>
+                <h2 class="section-jp">その課題、「制作」と「戦略」のプロが<br>ワンストップで解決します。</h2>
+                <p class="section-desc">弊社はただの動画制作会社ではありません。<br>「戦略・シナリオ・制作」の3つを同時に提供するパートナーです。</p>
             </div>
             
             <div class="solution-grid">
-                <div class="solution-card">
-                    <div class="step-num">01</div>
-                    <h3>Consulting<br><small>売るためのロジック</small></h3>
-                    <p>経営コンサルタントの視点で、技術の強みを棚卸し。「なんとなく凄い」ではなく「なぜ買うべきか」という売れるロジックを構築します。</p>
+                <div class="sol-card">
+                    <div class="sol-icon"><span class="material-icons">analytics</span></div>
+                    <h3 class="sol-title">Consulting<br><small>売るためのロジック</small></h3>
+                    <p class="sol-desc">経営コンサルタントの視点で、技術の強みを棚卸し。「なんとなく凄い」ではなく「なぜ買うべきか」という売れるロジックを構築します。</p>
                 </div>
-                <div class="solution-card">
-                    <div class="step-num">02</div>
-                    <h3>Scenario<br><small>成約へ導くシナリオ</small></h3>
-                    <p>ターゲット顧客の心理を読み解き、どの順番で何を伝えれば「Yes」を引き出せるか。商談の勝率を高める構成を設計します。</p>
+                <div class="sol-card">
+                    <div class="sol-icon"><span class="material-icons">movie_filter</span></div>
+                    <h3 class="sol-title">Scenario<br><small>成約へ導くシナリオ</small></h3>
+                    <p class="sol-desc">ターゲット顧客の心理を読み解き、どの順番で何を伝えれば「Yes」を引き出せるか。商談の勝率を高める構成を設計します。</p>
                 </div>
-                <div class="solution-card">
-                    <div class="step-num">03</div>
-                    <h3>Creative<br><small>理解させるクリエイティブ</small></h3>
-                    <p>実写 × 図解アニメーション。派手なだけの映像ではなく、脳に直接メリットを届ける「商談用プレゼン動画」を作ります。</p>
+                <div class="sol-card">
+                    <div class="sol-icon"><span class="material-icons">video_library</span></div>
+                    <h3 class="sol-title">Creative<br><small>理解させるクリエイティブ</small></h3>
+                    <p class="sol-desc">実写 × 図解アニメーション。派手なだけの映像ではなく、脳に直接メリットを届ける「商談用プレゼン動画」を作ります。</p>
                 </div>
             </div>
         </div>
@@ -367,33 +346,32 @@
 
     <section id="works" class="works">
         <div class="container">
-            <div class="section-title">
-                <span>Works</span>
-                <h2>その場で「腹落ちさせ」、<br>帰国後に「社内共有させる」。</h2>
-                <p>成約率向上には「2つの武器」が必要です。<br>弊社はこの両方を、補助金予算で制作します。</p>
+            <div class="section-head">
+                <span class="section-en">Works</span>
+                <h2 class="section-jp">その場で「腹落ちさせ」、<br>帰国後に「社内共有させる」。</h2>
+                <p class="section-desc">成約率向上には「2つの武器」が必要です。<br>弊社はこの両方を、補助金予算で制作します。</p>
             </div>
 
-            <div class="works-item">
-                <div class="works-content">
-                    <span style="color:var(--accent-color); font-weight:bold;">武器①：セールス動画</span>
-                    <h3 class="works-h3">営業品質を標準化する<br>「プレゼンテーション動画」</h3>
+            <div class="work-item">
+                <div class="work-text">
+                    <span class="work-badge">武器①：セールス動画</span>
+                    <h3 class="work-h3">営業品質を標準化する<br>「プレゼンテーション動画」</h3>
                     <p>英語が苦手な技術者、製品知識の浅い「通訳」や「現地スタッフ」でも、タブレットで動画を見せるだけで<strong>本社トップ営業と同じクオリティの商談</strong>が可能になります。</p>
                     <p>音声・視覚で理解を促し、ストーリーで共感を生みます。</p>
                 </div>
-                <div class="works-image">
-                    <img src="video-sample.jpg" alt="商談動画イメージ" style="background:#ddd; min-height:200px; display:block; width:100%;">
+                <div class="work-img">
+                    <img src="video-sample.jpg" alt="動画イメージ">
                 </div>
             </div>
 
-            <div class="works-item" style="flex-direction: row-reverse;">
-                <div class="works-content">
-                    <span style="color:var(--accent-color); font-weight:bold;">武器②：マンガ資料</span>
-                    <h3 class="works-h3">捨てられずに決裁者に届く<br>「コミック形式チラシ」</h3>
-                    <p>文字だけのパンフレットは、帰国後にゴミ箱行きです。<br>マンガなら「面白い」と持ち帰られ、<strong>動画URLと共に決裁者の手元まで回覧</strong>されます。</p>
-                    <p>帰国後の追撃メールでも強力な武器になります。</p>
+            <div class="work-item" style="flex-direction: row-reverse;">
+                <div class="work-text">
+                    <span class="work-badge">武器②：マンガ資料</span>
+                    <h3 class="work-h3">捨てられずに決裁者に届く<br>「コミック形式チラシ」</h3>
+                    <p>文字だけのパンフレットは、帰国後にゴミ箱行きです。マンガなら「面白い」と持ち帰られ、<strong>動画URLと共に決裁者の手元まで回覧</strong>されます。</p>
                 </div>
-                <div class="works-image">
-                    <img src="manga-sample.jpg" alt="マンガチラシイメージ" style="background:#ddd; min-height:200px; display:block; width:100%;">
+                <div class="work-img">
+                    <img src="manga-sample.jpg" alt="マンガチラシイメージ">
                 </div>
             </div>
         </div>
@@ -401,26 +379,26 @@
 
     <section id="plan" class="plan">
         <div class="container">
-            <div class="section-title">
-                <span>Plan</span>
-                <h2>補助金を活用すれば、<br>「実質負担」はここまで下がります。</h2>
+            <div class="section-head">
+                <span class="section-en">Plan</span>
+                <h2 class="section-jp">補助金を活用すれば、<br>「実質負担」はここまで下がります。</h2>
             </div>
-
-            <table class="price-table">
+            
+            <table class="plan-table">
                 <tr>
                     <th>ライトプラン</th>
                     <td>
                         <strong>動画制作 (Vyond/実写)</strong><br>
                         定価：50万円〜<br>
-                        <span class="real-cost">(補助金活用で実質 約16万円〜)</span>
+                        <span class="red bold">(補助金活用で実質 約16万円〜)</span>
                     </td>
                 </tr>
-                <tr class="price-highlight">
-                    <th>★おすすめ<br>スタンダードプラン</th>
+                <tr class="plan-rec">
+                    <th>スタンダードプラン</th>
                     <td>
                         <strong>上記 ＋ 商談シナリオ設計 ＋ 多言語マンガチラシ ＋ 補助金申請サポート</strong><br>
                         定価：150万円〜<br>
-                        <span class="real-cost">(補助金活用で実質 約50万円〜)</span>
+                        <span class="red bold">(補助金活用で実質 約50万円〜)</span>
                     </td>
                 </tr>
                 <tr>
@@ -428,50 +406,50 @@
                     <td>
                         <strong>上記 ＋ 展示会戦略コンサル ＋ 海外プレスリリース配信</strong><br>
                         定価：300万円〜<br>
-                        <span class="real-cost">(補助金活用で実質 約100万円〜)</span>
+                        <span class="red bold">(補助金活用で実質 約100万円〜)</span>
                     </td>
                 </tr>
             </table>
-            <p style="font-size:0.8rem; margin-top:10px; text-align: right;">※補助金の採択には審査があります。必ず採択される保証はありませんが、採択に向け全力で支援します。</p>
+            <p style="text-align:right; font-size:0.8rem; margin-top:10px;">※補助金の採択には審査があります。必ず採択される保証はありませんが、全力で支援します。</p>
         </div>
     </section>
 
     <section id="profile" class="profile">
         <div class="container">
-            <div class="section-title">
-                <span>Profile</span>
-                <h2>私がパートナーになります</h2>
+            <div class="section-head">
+                <span class="section-en">Profile</span>
+                <h2 class="section-jp">私がパートナーになります</h2>
             </div>
-            <div class="profile-container">
-                <div class="profile-img">
+            <div class="profile-wrap">
+                <div class="profile-pic">
                     <img src="profile.png" alt="プロフィール写真">
                 </div>
-                <div class="profile-text">
-                    <h3>海外展開戦略コンサルタント / 経営コンサルタント</h3>
-                    <p><strong>「日本の技術は世界一。でも、伝え方は三流」</strong></p>
-                    <p>悔しいですが、これが海外展示会や海外商談の現実です。<br>私は10年間の海外実務経験の中で、品質では劣る他国製品が、巧みな「見せ方」で日本製品に競り勝つ場面を何度も見てきました。</p>
-                    <p>言葉の壁、商習慣の壁、そして「予算」の壁。これらを理由に、貴社の素晴らしい技術が埋もれてしまうのは、日本の損失です。</p>
-                    <p>私は、経営コンサルとして国の制度をフル活用し、「予算の壁」を壊します。<br>そしてクリエイターとして、言葉がいらない動画で「言葉の壁」を壊します。</p>
-                    <p>精神論ではなく、「勝つための準備」を一緒に始めましょう。</p>
+                <div class="profile-info">
+                    <span class="profile-role">海外展開戦略コンサルタント / 経営コンサルタント</span>
+                    <div class="profile-msg">
+                        <p><strong>「日本の技術は世界一。でも、伝え方は三流」</strong></p>
+                        <p>悔しいですが、これが海外展示会や海外商談の現実です。私は10年間の海外実務経験の中で、品質では劣る他国製品が、巧みな「見せ方」で日本製品に競り勝つ場面を何度も見てきました。</p>
+                        <p>言葉の壁、商習慣の壁、そして「予算」の壁。これらを理由に、貴社の素晴らしい技術が埋もれてしまうのは、日本の損失です。</p>
+                        <p>私は、経営コンサルとして国の制度をフル活用し、「予算の壁」を壊します。そしてクリエイターとして、言葉がいらない動画で「言葉の壁」を壊します。</p>
+                        <p>精神論ではなく、「勝つための準備」を一緒に始めましょう。</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="cta-section">
+    <section id="contact" class="cta">
         <div class="container">
-            <div class="section-title">
-                <span style="color:var(--white);">Contact</span>
-                <h2 style="color:var(--white);">まずは「可能性」を確認してください</h2>
+            <div class="section-head">
+                <span class="section-en" style="color:#fff;">Contact</span>
+                <h2 class="section-jp" style="color:#fff;">まずは「可能性」を確認してください</h2>
             </div>
-            <div class="cta-box">
-                <p>無理な売り込みは一切いたしません。<br>「ウチは補助金を使える？」を無料で判定します。</p>
-                <a href="https://forms.gle/Bnx2JSotMyagQjnT9" target="_blank" class="btn btn-primary" style="background-color: var(--white); color: var(--primary-color); width: 80%; margin: 20px 0;">
+            <div class="cta-content">
+                <p>無理な売り込みは一切いたしません。「ウチは補助金を使える？」を無料で判定します。</p>
+                <a href="https://forms.gle/Bnx2JSotMyagQjnT9" target="_blank" class="btn btn-gold" style="background:#fff; color:var(--primary); width:100%; max-width:400px;">
                     【無料】オンライン診断を申し込む<br><span style="font-size:0.8rem;">※Googleフォームへ移動します</span>
                 </a>
-                
-                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 30px 0;">
-                
+                <div style="margin: 30px 0; border-top:1px solid rgba(255,255,255,0.2);"></div>
                 <p>「申し込み前に、ちょっとだけ質問したい」という方はこちら</p>
                 <a href="https://lin.ee/3ThqYBl" target="_blank" class="btn btn-line">LINEでサクッと質問する</a>
             </div>
@@ -483,15 +461,12 @@
             <div class="footer-grid">
                 <div>
                     <a href="#" class="footer-logo">合同会社MACHIKA</a>
-                    <div class="footer-company-info">
-                        <p>〒450-0002</p>
-                        <p>愛知県名古屋市中村区名駅４丁目２４番５号</p>
-                        <p>Email: contact@machika.works</p>
-                    </div>
+                    <p>〒450-0002<br>愛知県名古屋市中村区名駅４丁目２４番５号</p>
+                    <p>Email: contact@machika.works</p>
                 </div>
-                <div>
+                <div class="footer-nav">
                     <strong>事業内容</strong>
-                    <ul style="margin-top:10px; font-size:0.9rem; color:#aaa;">
+                    <ul>
                         <li>海外展示会・商談支援</li>
                         <li>動画・漫画制作</li>
                         <li>補助金申請サポート</li>
