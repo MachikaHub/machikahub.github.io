@@ -145,19 +145,23 @@
             .logo { font-size: 1.2rem; }
         }
 
-        /* --- メインビジュアル (FV) --- */
-        /* クラス名を変更して区別しました */
+/* --- メインビジュアル (Heroエリア) のスタイル --- */
         .header-hero {
             position: relative;
-            background-image: url('headtax.jpg'); /* 画像がない場合は背景色になります */
+            width: 100%;
+            /* 画像がない場合も考慮して濃い青背景を指定 */
             background-color: #002a5b; 
+            /* 画像があれば表示（パスは適宜変更してください） */
+            background-image: url('headtax.jpg'); 
             background-size: cover;
             background-position: center;
             color: #fff;
-            padding: 100px 20px 80px;
+            padding: 100px 20px 80px; /* 余白調整 */
             text-align: center;
             overflow: hidden;
+            border-radius: 0 0 15px 15px; /* 下側だけ角丸にするとお洒落かも */
         }
+        /* 写真の上に被せる黒いフィルター */
         .header-hero::before {
             content: '';
             position: absolute;
@@ -165,17 +169,19 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 15, 40, 0.65);
+            background: rgba(0, 15, 40, 0.65); /* 暗くするフィルター */
             z-index: 1;
         }
+        /* 文字などのコンテンツ（フィルターより上に表示） */
         .header-content {
             position: relative;
             z-index: 2;
         }
+        /* キャッチコピー上の小さなタグ */
         .header-sub {
             font-size: 1.1rem;
             margin-bottom: 25px;
-            background-color: var(--accent-color);
+            background-color: var(--accent-color); /* 金色 */
             color: #fff;
             display: inline-block;
             padding: 6px 20px;
@@ -183,20 +189,31 @@
             font-weight: 700;
             letter-spacing: 0.05em;
         }
+        /* メインキャッチコピー */
         .header-main {
             font-size: 2.4rem;
             font-weight: 700;
             margin-bottom: 30px;
+            line-height: 1.4;
             text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
+        /* サブコピー */
         .header-copy {
-            font-size: 1.4rem;
+            font-size: 1.1rem; /* 少し小さめに調整 */
             font-weight: 700;
             border-top: 2px solid rgba(255,255,255,0.5);
             border-bottom: 2px solid rgba(255,255,255,0.5);
             padding: 20px 0;
             display: inline-block;
             margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        /* スマホ用調整 */
+        @media (max-width: 600px) {
+            .header-hero { padding: 60px 20px; }
+            .header-main { font-size: 1.8rem; }
+            .header-copy { font-size: 1rem; text-align: left; }
         }
 
         /* --- 漫画セクション --- */
@@ -514,7 +531,7 @@
 
 <div class="container">
 
-    <header class="header-hero">
+<header class="header-hero">
         <div class="header-content">
             <div class="header-sub">運送業・建設業の経営者様へ</div>
             <h1 class="header-main">
