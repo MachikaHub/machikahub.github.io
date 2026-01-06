@@ -18,6 +18,8 @@
             --accent-color: #c4a300; /* 落ち着いたゴールド */
             --text-color: #333;
             --bg-light: #f8f9fa; /* ごく薄いグレー */
+            --white: #fff;
+            --primary: #002a5b;
             --highlight-red: #d60000; /* 強調の赤 */
         }
 
@@ -91,10 +93,64 @@
             color: var(--accent-color);
         }
         
-        /* --- ヘッダー (FV) --- */
-        .header {
+       /* =========================================
+           ヘッダー (Top Page Style)
+           ========================================= */
+        header {
+            background-color: var(--white);
+            height: 70px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+        }
+        .header-inner {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-menu li a {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-menu li a:hover {
+            color: var(--accent-color);
+        }
+        /* スマホ用簡易レスポンシブ */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } /* ハンバーガーメニューは省略 */
+            .logo { font-size: 1.2rem; }
+        }
+
+        /* --- メインビジュアル (FV) --- */
+        /* クラス名を変更して区別しました */
+        .header-hero {
             position: relative;
-            background-image: url('headtax.jpg');
+            background-image: url('headtax.jpg'); /* 画像がない場合は背景色になります */
+            background-color: #002a5b; 
             background-size: cover;
             background-position: center;
             color: #fff;
@@ -102,7 +158,7 @@
             text-align: center;
             overflow: hidden;
         }
-        .header::before {
+        .header-hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -153,19 +209,6 @@
             max-width: 90%;
         }
 
-        /* --- 問題提起 --- */
-        .problem-highlight {
-            background: #fff;
-            border-left: 6px solid var(--accent-color);
-            padding: 30px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin: 30px auto;
-            max-width: 720px;
-        }
-        
         /* --- 解決策（3つの柱） --- */
         .solution-box {
             background-color: #fff;
@@ -291,61 +334,59 @@
             top: 10px;
             left: 10px;
         }
-/* --- プロフィール修正版 --- */
-.profile-box {
-    display: flex;
-    flex-wrap: nowrap; /* スマホでも横並びを維持したい場合はnowrap、崩すならwrap */
-    align-items: flex-start; /* 上揃えにする（画像と文章の頭を合わせる） */
-    background-color: #fff;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    padding: 40px;
-    border-radius: 15px;
-    max-width: 800px;
-    margin: 0 auto;
-}
+        /* --- プロフィール修正版 --- */
+        .profile-box {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            background-color: #fff;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-.profile-img {
-    width: 150px; /* 幅を少しスリムに */
-    height: auto; /* 高さは自動（元の縦長比率を維持） */
-    border-radius: 8px; /* 丸すぎない角丸に */
-    margin-right: 30px; /* 文章との間隔 */
-    border: 3px solid var(--bg-light);
-    flex-shrink: 0; /* 画像が潰れないようにする */
-}
+        .profile-img {
+            width: 150px;
+            height: auto;
+            border-radius: 8px;
+            margin-right: 30px;
+            border: 3px solid var(--bg-light);
+            flex-shrink: 0;
+        }
 
-.profile-text {
-    flex: 1;
-}
+        .profile-text {
+            flex: 1;
+        }
 
-/* 名前画像（name.jpg）やお名前テキストの左寄せ設定 */
-.profile-name-area {
-    margin-bottom: 15px;
-    text-align: left; /* 強制的に左寄せ */
-}
-.profile-name-area img {
-    margin: 0; /* 画像の中央寄せを打ち消して左に置く */
-    display: block; /* ブロック要素にして安定させる */
-    max-width: 200px; /* 名前画像がデカすぎないように制限 */
-}
+        .profile-name-area {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .profile-name-area img {
+            margin: 0;
+            display: block;
+            max-width: 200px;
+        }
 
-/* スマホ用調整 */
-@media (max-width: 600px) {
-    .profile-box { 
-        display: block; /* スマホでは縦積みに戻す */
-        text-align: center; 
-        padding: 30px 20px;
-    }
-    .profile-img { 
-        margin: 0 auto 20px; /* スマホの時だけ中央に戻す */
-        width: 100px; 
-    }
-    .profile-name-area {
-        text-align: center; /* スマホでは名前も中央が見やすい */
-    }
-    .profile-name-area img {
-        margin: 0 auto; /* スマホでは中央寄せ */
-    }
-}
+        @media (max-width: 600px) {
+            .profile-box { 
+                display: block;
+                text-align: center; 
+                padding: 30px 20px;
+            }
+            .profile-img { 
+                margin: 0 auto 20px;
+                width: 100px; 
+            }
+            .profile-name-area {
+                text-align: center;
+            }
+            .profile-name-area img {
+                margin: 0 auto;
+            }
+        }
 
         /* --- CTA (オファー) --- */
         .cta-section {
@@ -374,7 +415,7 @@
         }
         .btn {
             display: flex;
-            flex-wrap: wrap; /* 改行用 */
+            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
             gap: 10px;
@@ -414,7 +455,7 @@
             opacity: 0.9;
             margin-top: 5px;
             font-weight: normal;
-            flex-basis: 100%; /* 強制的に改行させる */
+            flex-basis: 100%;
         }
         .btn-form .micro-copy { color: #666; }
 
@@ -427,27 +468,62 @@
             .solution-box { padding: 30px 20px; }
             .case-box { padding: 25px 20px; }
             .case-item { min-width: 100%; margin-bottom: 15px; }
-            .profile-box { padding: 30px 20px; text-align: center; display: block; }
-            .profile-img { margin: 0 auto 25px; }
             .btn { font-size: 1.1rem; padding: 20px; }
             .manga-section img { max-width: 100%; box-shadow: none; }
         }
+
+        /* =========================================
+           フッター (Top Page Style)
+           ========================================= */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 60px 0 20px;
+            font-size: 0.9rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-logo { font-size: 1.2rem; color: var(--white); font-weight: bold; margin-bottom: 15px; display: block; }
+        .footer-nav ul { list-style: none; padding: 0; }
+        .footer-nav li { margin-bottom: 10px; }
+        .copyright { border-top: 1px solid #444; padding-top: 20px; text-align: center; font-size: 0.8rem; }
+        
     </style>
 </head>
 <body>
 
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">合同会社MACHIKA</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#problem">課題</a></li>
+                    <li><a href="#solution">解決策</a></li>
+                    <li><a href="#works">実績・サービス</a></li>
+                    <li><a href="#plan">料金プラン</a></li>
+                    <li><a href="#profile">プロフィール</a></li>
+                    <li><a href="#contact" style="color:var(--accent);">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
 <div class="container">
 
-    <header class="header">
+    <header class="header-hero">
         <div class="header-content">
             <div class="header-sub">運送業・建設業の経営者様へ</div>
             <h1 class="header-main">
-                その「長距離移動」、    
+                その「長距離移動」、<br>    
                 ただの経費で終わらせていませんか？
             </h1>
             <div class="header-copy">
-人が採れない・辞める――それでも給料は上げられない。<br>
-給与を変えずに人材対する制度設計。<br>
+                人が採れない・辞める――それでも給料は上げられない。<br>
+                給与を変えずに人材対する制度設計。<br>
             </div>
             <p style="margin-top:30px; font-size:1rem; font-weight:bold; display:flex; align-items:center; justify-content:center; gap:5px;">
                 <span class="material-icons-round">verified_user</span>
@@ -461,7 +537,7 @@
         ※制度の適用可否・効果は、会社規模・勤務実態・就業規則等により異なります
     </section>
 
-    <section class="section">
+    <section class="section" id="problem">
         <h2 class="section-title">
             <span class="material-icons-round">auto_awesome</span>
             人材対策につながる制度設計とは？
@@ -501,7 +577,7 @@
         </div>
     </section>
 
-    <section class="section" style="background-color:#fff;">
+    <section class="section" id="works" style="background-color:#fff;">
         <h2 class="section-title">
             <span class="material-icons-round">trending_up</span>
             小規模な会社ほど<br>
@@ -558,7 +634,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="solution">
         <h2 class="section-title">
             <span class="material-icons-round">groups</span>
             浮いた税金で<br>「選ばれる会社」へ
@@ -572,7 +648,7 @@
         </p>
     </section>
 
-   <section class="section">
+   <section class="section" id="profile">
     <h2 class="section-title">
         <span class="material-icons-round">gavel</span>
         「適法性」と「経営視点」を<br>重視します
@@ -584,7 +660,7 @@
             <div class="profile-name-area">
                 <span style="font-size:0.9rem; color:#666; font-weight:bold; display:block; margin-bottom:5px;">監修・提案：</span>
                 <img src="name.jpg" alt="お名前">
-                </div>
+            </div>
 
             <span style="font-size:0.9rem; color:#666; font-weight:bold; display:block; margin-bottom:15px;">中小企業診断士 / 2級FP技能士</span>
             
@@ -627,11 +703,29 @@
         </a>
     </section>
 
-    <footer style="background:var(--main-color); color:#fff; text-align:center; padding:30px 20px; font-size:0.9rem;">
-        &copy; 2025 MACHIKA. All Rights Reserved.
-    </footer>
-
-</div>
+</div> <footer>
+    <div class="container" style="background:transparent; box-shadow:none; color:#ccc;">
+        <div class="footer-grid">
+            <div>
+                <a href="#" class="footer-logo">合同会社MACHIKA</a>
+                <p>〒450-0002<br>愛知県名古屋市中村区名駅４丁目２４番５号</p>
+                <p>Email: contact@machika.works</p>
+            </div>
+            <div class="footer-nav">
+                <strong>事業内容</strong>
+                <ul>
+                    <li>海外展示会・商談支援</li>
+                    <li>動画・漫画制作</li>
+                    <li>補助金申請サポート</li>
+                    <li>経営コンサルティング</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 MACHIKA WORKS. All Rights Reserved.
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
