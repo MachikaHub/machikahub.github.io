@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>運送・建設業向け 手取り最適化による人材採用・定着支援</title>
+    <title>運送・建設業向け 手取り最大化プロジェクト</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,14 +25,14 @@
         body {
             font-family: 'Noto Sans JP', sans-serif;
             color: var(--text-color);
-            line-height: 2.0;
+            line-height: 2.0; /* 読みやすく行間を広めに */
             margin: 0;
             padding: 0;
             background-color: #f0f2f5;
             -webkit-font-smoothing: antialiased;
         }
         .container {
-            max-width: 960px; /* ここが基準の幅 */
+            max-width: 960px;
             margin: 0 auto;
             background-color: #fff;
             padding: 0;
@@ -51,15 +51,15 @@
             line-height: 1.4;
         }
         
-        /* 文章の横幅制限 */
+        /* 文章の横幅制限（読みやすくする調整） */
         p {
             margin-bottom: 1.8em;
-            max-width: 720px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 720px; /* 一行が長くなりすぎないように制限 */
+            margin-left: auto; /* 中央寄せ */
+            margin-right: auto; /* 中央寄せ */
         }
         
-        /* アイコン調整 */
+        /* アイコンの調整 */
         .material-icons-round {
             vertical-align: middle;
             margin-right: 5px;
@@ -91,89 +91,81 @@
             color: var(--accent-color);
         }
         
-       /* =========================================
-          ヘッダー (Top Page Style)
-          ========================================= */
-        header {
-            background-color: #fff; /* var(--white) を修正 */
-            height: 70px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-        }
-        .header-inner {
-            width: 100%;
-            max-width: 960px; /* 【修正】1100px → 960px (.containerと合わせる) */
-            margin: 0 auto;
-            padding: 0 30px; /* 【修正】左右の余白を.sectionのpaddingと合わせる */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-sizing: border-box; /* paddingを含めた幅計算にする */
-        }
-        .logo {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--main-color); /* var(--primary) を修正 */
-            letter-spacing: 1px;
-            text-decoration: none;
-        }
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            margin: 0;
-            padding: 0;
-        }
-        .nav-menu li a {
-            font-size: 0.9rem;
-            color: var(--main-color); /* var(--primary) を修正 */
-            font-weight: bold;
-            text-decoration: none;
-        }
-        
-        /* スマホ用簡易レスポンシブ */
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .logo { font-size: 1.2rem; }
-            .header-inner { padding: 0 20px; }
-        }
-
-        /* --- ヒーローエリア（タイトル部分） --- */
-        .header-content {
-            padding: 60px 30px;
+        /* --- ヘッダー (FV) --- */
+        .header {
+            position: relative;
+            background-image: url('headtax.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 100px 20px 80px;
             text-align: center;
-            background-color: var(--bg-light);
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 15, 40, 0.65);
+            z-index: 1;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
         }
         .header-sub {
-            color: var(--accent-color);
-            font-weight: bold;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            background-color: var(--accent-color);
+            color: #fff;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
         }
         .header-main {
-            font-size: 2.5rem;
-            color: var(--main-color);
-            margin-bottom: 20px;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         .header-copy {
-            font-size: 1.1rem;
-            color: #666;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-top: 2px solid rgba(255,255,255,0.5);
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+            padding: 20px 0;
+            display: inline-block;
+            margin-bottom: 30px;
         }
 
         /* --- 漫画セクション --- */
         .manga-section {
             padding: 60px 0;
             background-color: #e9ecef;
-            text-align: center; /* 中央寄せ追加 */
         }
         .manga-section img {
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             max-width: 90%;
         }
 
+        /* --- 問題提起 --- */
+        .problem-highlight {
+            background: #fff;
+            border-left: 6px solid var(--accent-color);
+            padding: 30px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 30px auto;
+            max-width: 720px;
+        }
+        
         /* --- 解決策（3つの柱） --- */
         .solution-box {
             background-color: #fff;
@@ -299,61 +291,61 @@
             top: 10px;
             left: 10px;
         }
+/* --- プロフィール修正版 --- */
+.profile-box {
+    display: flex;
+    flex-wrap: nowrap; /* スマホでも横並びを維持したい場合はnowrap、崩すならwrap */
+    align-items: flex-start; /* 上揃えにする（画像と文章の頭を合わせる） */
+    background-color: #fff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-        /* --- プロフィール修正版 --- */
-        .profile-box {
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: flex-start;
-            background-color: #fff;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+.profile-img {
+    width: 150px; /* 幅を少しスリムに */
+    height: auto; /* 高さは自動（元の縦長比率を維持） */
+    border-radius: 8px; /* 丸すぎない角丸に */
+    margin-right: 30px; /* 文章との間隔 */
+    border: 3px solid var(--bg-light);
+    flex-shrink: 0; /* 画像が潰れないようにする */
+}
 
-        .profile-img {
-            width: 150px;
-            height: auto;
-            border-radius: 8px;
-            margin-right: 30px;
-            border: 3px solid var(--bg-light);
-            flex-shrink: 0;
-        }
+.profile-text {
+    flex: 1;
+}
 
-        .profile-text {
-            flex: 1;
-        }
+/* 名前画像（name.jpg）やお名前テキストの左寄せ設定 */
+.profile-name-area {
+    margin-bottom: 15px;
+    text-align: left; /* 強制的に左寄せ */
+}
+.profile-name-area img {
+    margin: 0; /* 画像の中央寄せを打ち消して左に置く */
+    display: block; /* ブロック要素にして安定させる */
+    max-width: 200px; /* 名前画像がデカすぎないように制限 */
+}
 
-        .profile-name-area {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .profile-name-area img {
-            margin: 0;
-            display: block;
-            max-width: 200px;
-        }
-
-        /* スマホ用調整 */
-        @media (max-width: 600px) {
-            .profile-box { 
-                display: block; 
-                text-align: center; 
-                padding: 30px 20px;
-            }
-            .profile-img { 
-                margin: 0 auto 20px; 
-                width: 100px; 
-            }
-            .profile-name-area {
-                text-align: center;
-            }
-            .profile-name-area img {
-                margin: 0 auto;
-            }
-        }
+/* スマホ用調整 */
+@media (max-width: 600px) {
+    .profile-box { 
+        display: block; /* スマホでは縦積みに戻す */
+        text-align: center; 
+        padding: 30px 20px;
+    }
+    .profile-img { 
+        margin: 0 auto 20px; /* スマホの時だけ中央に戻す */
+        width: 100px; 
+    }
+    .profile-name-area {
+        text-align: center; /* スマホでは名前も中央が見やすい */
+    }
+    .profile-name-area img {
+        margin: 0 auto; /* スマホでは中央寄せ */
+    }
+}
 
         /* --- CTA (オファー) --- */
         .cta-section {
@@ -382,7 +374,7 @@
         }
         .btn {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* 改行用 */
             align-items: center;
             justify-content: center;
             gap: 10px;
@@ -422,7 +414,7 @@
             opacity: 0.9;
             margin-top: 5px;
             font-weight: normal;
-            flex-basis: 100%;
+            flex-basis: 100%; /* 強制的に改行させる */
         }
         .btn-form .micro-copy { color: #666; }
 
@@ -435,265 +427,211 @@
             .solution-box { padding: 30px 20px; }
             .case-box { padding: 25px 20px; }
             .case-item { min-width: 100%; margin-bottom: 15px; }
+            .profile-box { padding: 30px 20px; text-align: center; display: block; }
+            .profile-img { margin: 0 auto 25px; }
             .btn { font-size: 1.1rem; padding: 20px; }
             .manga-section img { max-width: 100%; box-shadow: none; }
         }
-        
-        /* =========================================
-           フッター (Top Page Style)
-           ========================================= */
-        footer {
-            background-color: #222;
-            color: #ccc;
-            padding: 60px 0 20px;
-            font-size: 0.9rem;
-            width: 100%; /* 全幅指定 */
-        }
-        /* フッター内の中央寄せ用コンテナ設定 */
-        footer .container {
-            background-color: transparent; /* フッター内では透明に */
-            box-shadow: none;
-            color: #ccc;
-            padding: 0 20px; /* スマホで見切れないよう内側に余白 */
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        .footer-logo { font-size: 1.2rem; color: #fff; font-weight: bold; margin-bottom: 15px; display: block; text-decoration: none;}
-        .footer-nav ul { list-style: none; padding: 0; }
-        .footer-nav li { margin-bottom: 10px; }
-        .copyright { border-top: 1px solid #444; padding-top: 20px; text-align: center; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-inner">
-            <a href="#" class="logo">合同会社MACHIKA</a>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#problem">課題</a></li>
-                    <li><a href="#solution">解決策</a></li>
-                    <li><a href="#works">実績・サービス</a></li>
-                    <li><a href="#plan">料金プラン</a></li>
-                    <li><a href="#profile">プロフィール</a></li>
-                    <li><a href="#contact" style="color:var(--accent-color);">お問い合わせ</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<div class="container">
 
-    <div class="container">
-
-        <header class="header-content">
+    <header class="header">
+        <div class="header-content">
             <div class="header-sub">運送業・建設業の経営者様へ</div>
             <h1 class="header-main">
-                その「長距離移動」、<br>    
+                その「長距離移動」、    
                 ただの経費で終わらせていませんか？
             </h1>
             <div class="header-copy">
-                人が採れない・辞める――それでも給料は上げられない。<br>
-                給与を変えずに人材対する制度設計。<br>
+人が採れない・辞める――それでも給料は上げられない。<br>
+給与を変えずに人材対する制度設計。<br>
             </div>
             <p style="margin-top:30px; font-size:1rem; font-weight:bold; display:flex; align-items:center; justify-content:center; gap:5px;">
                 <span class="material-icons-round">verified_user</span>
                 税理士監修・合法的な制度活用のみ扱っています
             </p>
-        </header>
+        </div>
+    </header>
 
-        <section class="manga-section">
-            <img src="lpmanga.jpg" alt="節税と手取り最大化の漫画"><br>
-            <p style="font-size:0.8rem; margin-top:10px;">※制度の適用可否・効果は、会社規模・勤務実態・就業規則等により異なります</p>
-        </section>
+    <section class="manga-section">
+        <img src="lpmanga.jpg" alt="節税と手取り最大化の漫画"><br>
+        ※制度の適用可否・効果は、会社規模・勤務実態・就業規則等により異なります
+    </section>
 
-        <section class="section" id="problem">
-            <h2 class="section-title">
-                <span class="material-icons-round">auto_awesome</span>
-                人材対策につながる制度設計とは？
-            </h2>
+    <section class="section">
+        <h2 class="section-title">
+            <span class="material-icons-round">auto_awesome</span>
+            人材対策につながる制度設計とは？
+        </h2>
 
-            <div class="solution-box">
-                <div class="solution-head">
-                    <span class="material-icons-round">local_shipping</span>
-                    ① 移動が多い業種ならではの考え方
-                </div>
-                <p>
-                    運送業・建設業は、現場や拠点間の移動が日常的に発生する業種です。</p>
-                <p>勤務実態に即した<strong>「旅費規程」</strong>を整備することで、移動に対する手当を税務上、給与とは異なる扱いで支給できる可能性があります。
-                </p>
+        <div class="solution-box">
+            <div class="solution-head">
+                <span class="material-icons-round">local_shipping</span>
+                ① 移動が多い業種ならではの考え方
             </div>
-
-            <div class="solution-box">
-                <div class="solution-head">
-                    <span class="material-icons-round">apartment</span>
-                    ② 住居に関する制度の見直し
-                </div>
-                <p>
-                    社長や役員の住居についても、契約形態や条件を整理することで、<strong>一部を会社経費として処理できる</strong>ケースがあります。</p>
-                <p>
-                    個人で負担していた場合と比べ、税金や社会保険料の面で差が出ることがあります。
-                </p>
-            </div>
-
-            <div class="solution-box">
-                <div class="solution-head">
-                    <span class="material-icons-round">manage_accounts</span>
-                    ③ 役員報酬・人件費全体のバランス調整
-                </div>
-                <p>
-                    上記のような制度を組み合わせることで、額面給与を無理に上げず、実質的な手取り感を調整し、人件費全体のバランスを整える設計の検討が可能になります。</p>
-                    <p>また浮いたお金を賞与として従業員に還元できる可能性もあります。
-                </p>
-            </div>
-        </section>
-
-        <section class="section" style="background-color:#fff;">
-            <h2 class="section-title">
-                <span class="material-icons-round">trending_up</span>
-                小規模な会社ほど<br>
-                検討余地があるケースも
-            </h2>
-            <p style="text-align:center; margin-bottom:40px;">
-                実際に、従業員数名規模の運送会社様で<br>
-                このような結果が出たケースがあります。
-            </p>
-
-            <div class="case-box">
-                <div class="case-badge">モデルケース：A運送 様</div>
-                <h3 class="case-title">
-                    従業員5名 / トラック3台稼働 の場合
-                </h3>
-
-                <div class="case-grid">
-                    <div class="case-item">
-                        <div class="case-label">
-                            <span class="material-icons-round">account_balance_wallet</span>
-                            社長個人の手取り額
-                        </div>
-                        <div class="case-number" style="color:var(--highlight-red);">
-                            <span>年間</span> +124<span>万円</span><br>
-                            <span style="font-size:1.2rem; background:var(--highlight-red); color:#fff; padding:2px 10px; border-radius:5px;">UP!</span>
-                        </div>
-                        <p style="font-size:0.85rem; margin-top:10px; color:#666; margin-bottom:0;">
-                            ※役員報酬の適正化＋社宅経費化＋出張日当の<br>非課税受取による効果合計
-                        </p>
-                    </div>
-
-                    <div class="case-item">
-                        <div class="case-label">
-                            <span class="material-icons-round">domain</span>
-                            会社負担の社会保険料
-                        </div>
-                        <div class="case-number" style="color:var(--main-color);">
-                            <span>年間</span> -58<span>万円</span><br>
-                            <span style="font-size:1.2rem; background:var(--main-color); color:#fff; padding:2px 10px; border-radius:5px;">削減!</span>
-                        </div>
-                        <p style="font-size:0.85rem; margin-top:10px; color:#666; margin-bottom:0;">
-                            ※標準報酬月額の等級ダウンによる<br>法定福利費の削減効果
-                        </p>
-                    </div>
-                </div>
-
-                <div class="case-comment">
-                    <p style="margin-bottom:0; padding-left:20px;">
-                        <strong>【コメント】</strong><br>
-                        たったトラック3台の稼働でも、旅費規程による日当（非課税）の積み上げと、社長の社宅化を組み合わせることで、<strong>年間で大きな差</strong>が生まれました。
-                        浮いたお金で「ドライバーへの決算賞与」を出し、離職防止に繋げています。
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="solution">
-            <h2 class="section-title">
-                <span class="material-icons-round">groups</span>
-                人材確保・定着のための<br>「原資」を生むために
-            </h2>
             <p>
-                この取り組みの目的は、単に税金を減らすことではありません。</p>
-            <ul>
-                <li>ドライバー・職人の待遇改善</li>
-                <li>決算賞与や手当の原資確保</li>
-                <li>採用活動への再投資</li>
-            </ul>
-            <p>といった、<strong>「選ばれる会社」</strong>になるための土台づくりです。
+                運送業・建設業は、現場や拠点間の移動が日常的に発生する業種です。勤務実態に即した<strong>「旅費規程」</strong>を整備することで、移動に対する手当を税務上、給与とは異なる扱いで支給できる可能性があります。
             </p>
-        </section>
+        </div>
 
-        <section class="section" id="profile">
-            <h2 class="section-title">
-                <span class="material-icons-round">gavel</span>
-                監修・サポート体制について
-            </h2>
-            <div class="profile-box">
-                <img src="https://github.com/MachikaHub/machikahub.github.io/blob/main/profile.png?raw=true" alt="プロフィール写真" class="profile-img">
-                
-                <div class="profile-text">
-                    <div class="profile-name-area">
-                        <span style="font-size:0.9rem; color:#666; font-weight:bold; display:block; margin-bottom:5px;">合同会社MACHIKA 代表：</span>
-                        <img src="name.jpg" alt="お名前">
+        <div class="solution-box">
+            <div class="solution-head">
+                <span class="material-icons-round">apartment</span>
+                ② 住居に関する制度の見直し
+            </div>
+            <p>
+                社長や役員の住居についても、契約形態や条件を整理することで、<strong>一部を会社経費として処理できる</strong>ケースがあります。</p>
+            <p>
+                個人で負担していた場合と比べ、税金や社会保険料の面で差が出ることがあります。
+            </p>
+        </div>
+
+        <div class="solution-box">
+            <div class="solution-head">
+                <span class="material-icons-round">manage_accounts</span>
+                ③ 役員報酬・人件費全体のバランス調整
+            </div>
+            <p>
+                上記のような制度を組み合わせることで、額面給与を無理に上げずに実質的な手取り感を調整し人件費全体のバランスを整える設計の検討が可能になります。</p>
+                <p>また浮いたお金で賞与として従業員に還元できる可能性もあります。
+            </p>
+        </div>
+    </section>
+
+    <section class="section" style="background-color:#fff;">
+        <h2 class="section-title">
+            <span class="material-icons-round">trending_up</span>
+            小規模な会社ほど<br>
+            検討余地があるケースも
+        </h2>
+        <p style="text-align:center; margin-bottom:40px;">
+            実際に、従業員数名規模の運送会社様で<br>
+            このような結果が出たケースがあります。
+        </p>
+
+        <div class="case-box">
+            <div class="case-badge">モデルケース：A運送 様</div>
+            <h3 class="case-title">
+                従業員5名 / トラック3台稼働 の場合
+            </h3>
+
+            <div class="case-grid">
+                <div class="case-item">
+                    <div class="case-label">
+                        <span class="material-icons-round">account_balance_wallet</span>
+                        社長個人の手取り額
                     </div>
+                    <div class="case-number" style="color:var(--highlight-red);">
+                        <span>年間</span> +124<span>万円</span><br>
+                        <span style="font-size:1.2rem; background:var(--highlight-red); color:#fff; padding:2px 10px; border-radius:5px;">UP!</span>
+                    </div>
+                    <p style="font-size:0.85rem; margin-top:10px; color:#666; margin-bottom:0;">
+                        ※役員報酬の適正化＋社宅経費化＋出張日当の<br>非課税受取による効果合計
+                    </p>
+                </div>
 
-                    <span style="font-size:0.9rem; color:#666; font-weight:bold; display:block; margin-bottom:15px;">中小企業診断士 / 2級FP技能士</span>
-                    
-                    <p style="margin-top:0;">
-                        提携税理士等の専門家が関与し、適法性・実務との整合性・将来リスクを確認したうえで設計を行います。<br>※社会通念上妥当な範囲での設計が前提です
+                <div class="case-item">
+                    <div class="case-label">
+                        <span class="material-icons-round">domain</span>
+                        会社負担の社会保険料
+                    </div>
+                    <div class="case-number" style="color:var(--main-color);">
+                        <span>年間</span> -58<span>万円</span><br>
+                        <span style="font-size:1.2rem; background:var(--main-color); color:#fff; padding:2px 10px; border-radius:5px;">削減!</span>
+                    </div>
+                    <p style="font-size:0.85rem; margin-top:10px; color:#666; margin-bottom:0;">
+                        ※標準報酬月額の等級ダウンによる<br>法定福利費の削減効果
                     </p>
                 </div>
             </div>
-        </section>
 
-        <section class="cta-section" id="contact">
-            <h2 class="cta-title">
-                まずは「自社で使えるか」<br>無料・簡易シミュレーション
-            </h2>
-            <p class="cta-text">
-                御社の「車両台数」「従業員数」「だいたいの移動距離」などをもとに、
-                <strong>「制度検討の余地があるかどうか」</strong>を簡易的に確認します。
-            </p>
-
-            <a href="https://lin.ee/3ThqYBl" class="btn btn-line">
-                <span class="material-icons-round">chat</span>
-                LINEで無料シミュレーション ＞
-                <div class="micro-copy" style="color:#fff;">※「無料相談」とメッセージください（30秒程度）</div>
-            </a>
-
-            <a href="https://forms.gle/pukKnizQtpJ2RXyu6" class="btn btn-form">
-                <span class="material-icons-round">mail</span>
-                LINEをやっていない方はこちら ＞
-                <div class="micro-copy">※メールでのご案内になります</div>
-            </a>
-        </section>
-
-    </div> <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <a href="#" class="footer-logo">合同会社MACHIKA</a>
-                    <p>〒450-0002<br>愛知県名古屋市中村区名駅４丁目２４番５号</p>
-                    <p>Email: contact@machika.works</p>
-                </div>
-                <div class="footer-nav">
-                    <strong>事業内容</strong>
-                    <ul>
-                        <li>海外展示会・商談支援</li>
-                        <li>動画・漫画制作</li>
-                        <li>補助金申請サポート</li>
-                        <li>経営コンサルティング</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2025 MACHIKA WORKS. All Rights Reserved.
+            <div class="case-comment">
+                <p style="margin-bottom:0; padding-left:20px;">
+                    <strong>【コメント】</strong><br>
+                    たったトラック3台の稼働でも、旅費規程による日当（非課税）の積み上げと、社長の社宅化を組み合わせることで、<strong>年間で大きな差</strong>が生まれました。
+                    浮いたお金で「ドライバーへの決算賞与」を出し、離職防止に繋げています。
+                </p>
             </div>
         </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">
+            <span class="material-icons-round">groups</span>
+            浮いた税金で<br>「選ばれる会社」へ
+        </h2>
+        <p>
+            このスキームは、単なる節税ではありません。最大の目的は<strong>「人材確保」</strong>です。
+        </p>
+        <p>
+            「基本給25万」よりも、「基本給22万＋<strong>非課税手当5万（実質手取り増）</strong>」の方が、ドライバーや職人にとっての魅力は圧倒的に上です。
+            削減できたコストを原資に、さらなる待遇改善や採用広告への投資が可能になります。
+        </p>
+    </section>
+
+   <section class="section">
+    <h2 class="section-title">
+        <span class="material-icons-round">gavel</span>
+        「適法性」と「経営視点」を<br>重視します
+    </h2>
+    <div class="profile-box">
+        <img src="https://github.com/MachikaHub/machikahub.github.io/blob/main/profile.png?raw=true" alt="プロフィール写真" class="profile-img">
+        
+        <div class="profile-text">
+            <div class="profile-name-area">
+                <span style="font-size:0.9rem; color:#666; font-weight:bold; display:block; margin-bottom:5px;">監修・提案：</span>
+                <img src="name.jpg" alt="お名前">
+                </div>
+
+            <span style="font-size:0.9rem; color:#666; font-weight:bold; display:block; margin-bottom:15px;">中小企業診断士 / 2級FP技能士</span>
+            
+            <p style="margin-top:0;">
+                私は「ただ税金を減らす」だけの提案はいたしません。「会社にお金を残し、それを人材投資に回して事業を成長させる」ための財務戦略をご提案します。
+            </p>
+            
+            <div style="background:#fff0f0; padding:10px; border-radius:10px; margin-top:5px;">
+                <p style="font-size:0.95rem; color:var(--highlight-red); font-weight:bold; margin-bottom:5px;">
+                    ※提携税理士法人による適法な設計・税務判断を行いますのでご安心ください。
+                </p>
+                <p style="font-size:0.8rem; color:#666; font-weight:normal; margin-bottom:0;">
+                    ※旅費日当の支給額は社会通念上妥当な範囲で設定する必要があります。<br>
+                    ※社宅の経費化率は物件や契約内容により異なります（約50〜85%程度）。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="cta-section" id="contact">
+        <h2 class="cta-title">
+            まずは「いくら手残りが増えるか」<br>無料シミュレーション
+        </h2>
+        <p class="cta-text">
+            御社の「車両台数」「従業員数」「だいたいの移動距離」を教えていただくだけで、
+            <strong>「年間でいくら税金が減り、いくら個人の手取りが増えるか」</strong>の概算を無料で試算いたします。
+        </p>
+
+        <a href="https://lin.ee/3ThqYBl" class="btn btn-line">
+            <span class="material-icons-round">chat</span>
+            LINEで無料シミュレーション ＞
+            <div class="micro-copy" style="color:#fff;">※サクッと30秒で。「無料相談」とメッセージください。</div>
+        </a>
+
+        <a href="https://forms.gle/pukKnizQtpJ2RXyu6" class="btn btn-form">
+            <span class="material-icons-round">mail</span>
+            LINEをやっていない方はこちら ＞
+            <div class="micro-copy">※メールでのご案内になります</div>
+        </a>
+    </section>
+
+    <footer style="background:var(--main-color); color:#fff; text-align:center; padding:30px 20px; font-size:0.9rem;">
+        &copy; 2025 MACHIKA. All Rights Reserved.
     </footer>
+
+</div>
 
 </body>
 </html>
-
-```
