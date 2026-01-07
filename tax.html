@@ -216,13 +216,36 @@
         }
 
         /* --- 漫画セクション --- */
+/* --- 漫画セクション修正版 --- */
         .manga-section {
             padding: 60px 0;
             background-color: #e9ecef;
         }
-        .manga-section img {
+        
+        /* 画像とテキストをまとめる箱 */
+        .manga-wrap {
+            width: 90%;       /* 画像の幅と同じにする */
+            max-width: 800px; /* ＰＣで広がりすぎないように制限（任意） */
+            margin: 0 auto;   /* 箱ごと画面中央に配置 */
+            text-align: left; /* 箱の中身（文字）は左寄せ */
+        }
+
+        /* 箱の中の画像設定 */
+        .manga-wrap img {
+            width: 100%;      /* 箱の幅いっぱいに表示 */
+            max-width: 100%;
+            height: auto;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            max-width: 90%;
+            display: block;
+        }
+
+        /* 注釈テキスト設定 */
+        .manga-note {
+            font-size: 0.8rem;
+            margin-top: 10px;
+            margin-bottom: 0;
+            color: #666;
+            max-width: 100%; /* 親要素の幅に合わせる */
         }
 
         /* --- 解決策（3つの柱） --- */
@@ -539,19 +562,21 @@
             </h1>
             <div class="header-copy">
                 人が採れない・辞める――それでも給料は上げられない。<br>
-                給与を変えずに人材対する制度設計。<br>
+                給与を変えずに人材対策する制度設計。<br>
             </div>
             <p style="margin-top:30px; font-size:1rem; font-weight:bold; display:flex; align-items:center; justify-content:center; gap:5px;">
                 <span class="material-icons-round">verified_user</span>
-                税理士監修・合法的な制度活用のみ扱っています
+                税理士監修・合法的な制度活用
             </p>
         </div>
 </div>
 
-    <section class="manga-section">
-        <img src="lpmanga.jpg" alt="節税と手取り最大化の漫画"><br>
-        ※制度の適用可否・効果は、会社規模・勤務実態・就業規則等により異なります
-    </section>
+<section class="manga-section">
+        <div class="manga-wrap">
+            <img src="lpmanga.jpg" alt="節税と手取り最大化の漫画">
+            <p class="manga-note">※制度の適用可否・効果は、会社規模・勤務実態・就業規則等により異なります</p>
+        </div>
+        </section>
 
     <section class="section" id="problem">
         <h2 class="section-title">
@@ -587,8 +612,8 @@
                 ③ 役員報酬・人件費全体のバランス調整
             </div>
             <p>
-                上記のような制度を組み合わせることで、額面給与を無理に上げずに実質的な手取り感を調整し人件費全体のバランスを整える設計の検討が可能になります。</p>
-                <p>また浮いたお金で賞与として従業員に還元できる可能性もあります。
+                上記のような制度を組み合わせることで、<strong>額面給与を変えずに実質的な手取り感を調整し、人件費全体のバランスを整える設計</strong>が検討できます。</p>
+                <p>また浮いたお金で、<strong>賞与として従業員に還元できる</strong>ケースもあります。
             </p>
         </div>
     </section>
@@ -653,69 +678,57 @@
     <section class="section" id="solution">
         <h2 class="section-title">
             <span class="material-icons-round">groups</span>
-            浮いた税金で<br>「選ばれる会社」へ
+            人材確保・定着のための<br>「原資」を生む
         </h2>
         <p>
-            このスキームは、単なる節税ではありません。最大の目的は<strong>「人材確保」</strong>です。
+            この取り組みの目的は、単に税金を減らすことではありません。
         </p>
         <p>
-            「基本給25万」よりも、「基本給22万＋<strong>非課税手当5万（実質手取り増）</strong>」の方が、ドライバーや職人にとっての魅力は圧倒的に上です。
-            削減できたコストを原資に、さらなる待遇改善や採用広告への投資が可能になります。
+            <strong>ドライバー・職人の待遇改善</strong>、<strong>決算賞与や手当の原資確保</strong>、<strong>採用活動への再投資</strong>といった、「選ばれる会社」になるための土台づくりです。
         </p>
     </section>
 
    <section class="section" id="profile">
     <h2 class="section-title">
         <span class="material-icons-round">gavel</span>
-        「適法性」と「経営視点」を<br>重視します
+        監修・サポート体制について
     </h2>
     <div class="profile-box">
         <img src="https://github.com/MachikaHub/machikahub.github.io/blob/main/profile.png?raw=true" alt="プロフィール写真" class="profile-img">
         
         <div class="profile-text">
             <div class="profile-name-area">
-                <span style="font-size:0.9rem; color:#666; font-weight:bold; display:block; margin-bottom:5px;">監修・提案：</span>
                 <img src="name.jpg" alt="お名前">
             </div>
 
             <span style="font-size:0.9rem; color:#666; font-weight:bold; display:block; margin-bottom:15px;">中小企業診断士 / 2級FP技能士</span>
             
             <p style="margin-top:0;">
-                私は「ただ税金を減らす」だけの提案はいたしません。「会社にお金を残し、それを人材投資に回して事業を成長させる」ための財務戦略をご提案します。
+                <strong>提携税理士等の専門家が関与し</strong>、適法性・実務との整合性・将来リスクを確認した上で設計を行います。<br>※旅費日当の支給額など、社会通念上 妥当な範囲での設計となります。
             </p>
-            
-            <div style="background:#fff0f0; padding:10px; border-radius:10px; margin-top:5px;">
-                <p style="font-size:0.95rem; color:var(--highlight-red); font-weight:bold; margin-bottom:5px;">
-                    ※提携税理士法人による適法な設計・税務判断を行いますのでご安心ください。
-                </p>
-                <p style="font-size:0.8rem; color:#666; font-weight:normal; margin-bottom:0;">
-                    ※旅費日当の支給額は社会通念上妥当な範囲で設定する必要があります。<br>
-                    ※社宅の経費化率は物件や契約内容により異なります（約50〜85%程度）。
-                </p>
-            </div>
         </div>
     </div>
 </section>
 
     <section class="cta-section" id="contact">
         <h2 class="cta-title">
-            まずは「いくら手残りが増えるか」<br>無料シミュレーション
+            まずは「自社で使えるか」<br>無料・簡易シミュレーション
         </h2>
         <p class="cta-text">
-            御社の「車両台数」「従業員数」「だいたいの移動距離」を教えていただくだけで、
-            <strong>「年間でいくら税金が減り、いくら個人の手取りが増えるか」</strong>の概算を無料で試算いたします。
+            御社の「車両台数」「従業員数」「だいたいの移動距離（月）」を教えていただくだけで、
+            <strong>「制度検討の余地があるかどうか」</strong>を簡易的に確認します。
         </p>
 
         <a href="https://lin.ee/3ThqYBl" class="btn btn-line">
             <span class="material-icons-round">chat</span>
             LINEで無料シミュレーション ＞
-            <div class="micro-copy" style="color:#fff;">※サクッと30秒で。「無料相談」とメッセージください。</div>
+            <div class="micro-copy" style="color:#fff;">※「無料相談」とメッセージください。</div>
         </a>
 
         <a href="https://forms.gle/pukKnizQtpJ2RXyu6" class="btn btn-form">
             <span class="material-icons-round">mail</span>
-            LINEをやっていない方はこちら ＞
-            <div class="micro-copy">※メールでのご案内になります</div>
+            メールでのご案内はこちら ＞
+            <div class="micro-copy">※LINEを使っていない方も対応可能です</div>
         </a>
     </section>
 
