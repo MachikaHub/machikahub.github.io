@@ -209,10 +209,63 @@
         }
         
         /* スマホ用調整 */
+        /* スマホ用調整 (600px以下) */
         @media (max-width: 600px) {
+            /* ヘッダー・文字サイズ調整 */
             .header-hero { padding: 60px 20px; }
             .header-main { font-size: 1.8rem; }
             .header-copy { font-size: 1rem; text-align: left; }
+            .section { padding: 50px 20px; }
+            .section-title { font-size: 1.5rem; margin-bottom: 30px; flex-direction: column;}
+            
+            /* ▼ ケーススタディ（ボックス）の修正 ▼ */
+            .case-grid {
+                display: block; /* 縦積みにする */
+            }
+            .case-box { 
+                padding: 25px 20px; 
+                width: auto; /* 幅を自動調整 */
+            }
+            .case-item { 
+                width: 100%; /* 横幅いっぱいに */
+                min-width: 0; /* 固定の最小幅をリセット */
+                margin-bottom: 20px; /* 下に余白 */
+                box-sizing: border-box; /* パディングを幅に含める */
+            }
+            .case-number {
+                font-size: 1.8rem; /* 数字が大きすぎてはみ出るのを防ぐ */
+            }
+
+            /* ▼ ボタン（LINE・メール）の修正 ▼ */
+            .btn { 
+                font-size: 1rem; /* 文字サイズを少し調整 */
+                padding: 20px 15px; /* 左右の余白を少し減らす */
+                width: 100%; /* 親要素に合わせて伸縮 */
+                max-width: 100%; /* 画面からはみ出さないように制限 */
+                box-sizing: border-box; /* パディングを幅に含める */
+                white-space: normal; /* 長い文字を改行させる */
+                flex-direction: column; /* アイコンと文字を縦積みに（必要なら） */
+                line-height: 1.4;
+            }
+            /* ボタン内のマイクロコピー（注釈）も改行許可 */
+            .micro-copy {
+                white-space: normal;
+            }
+
+            /* その他の調整 */
+            .solution-box { padding: 30px 20px; }
+            .profile-box { 
+                display: block;
+                text-align: center; 
+                padding: 30px 20px;
+            }
+            .profile-img { 
+                margin: 0 auto 20px;
+                width: 100px; 
+            }
+            .profile-name-area { text-align: center; }
+            .profile-name-area img { margin: 0 auto; }
+            .manga-section img { max-width: 100%; box-shadow: none; }
         }
 
         /* --- 漫画セクション --- */
@@ -540,9 +593,9 @@
             <a href="#" class="logo">合同会社MACHIKA</a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#manga">サービス概要></li>
-                    <li><a href="#problem">人材対策につながる制度設計>人材た</li>
-                    <li><a href="#works">事例紹介</li>
+                    <li><a href="#manga">サービス概要</a></li>
+                    <li><a href="#problem">人材対策につながる制度設計</a></li>
+                    <li><a href="#works">事例紹介</a></li>
                     <li><a href="#profile">プロフィール</a></li>
                     <li><a href="#contact" style="color:var(--accent);">お問い合わせ</a></li>
                 </ul>
@@ -560,7 +613,7 @@
                 ただの経費で終わらせていませんか？
             </h1>
             <div class="header-copy">
-                人が採れない・辞める――それでも給料は上げられない。<br>
+                人が採れない・辞める――<br>それでも給料は上げられない。<br>
                 給与を変えずに人材対策する制度設計。<br>
             </div>
             <p style="margin-top:30px; font-size:1rem; font-weight:bold; display:flex; align-items:center; justify-content:center; gap:5px;">
@@ -580,7 +633,7 @@
     <section class="section" id="problem">
         <h2 class="section-title">
             <span class="material-icons-round">auto_awesome</span>
-            人材対策につながる制度設計とは？
+            人材対策につながる<br>制度設計とは？
         </h2>
 
         <div class="solution-box">
@@ -711,7 +764,7 @@
 
     <section class="cta-section" id="contact">
         <h2 class="cta-title">
-            まずは「自社で使えるか」<br>無料・簡易シミュレーション
+            まずは<br>「自社で使えるか」<br>無料・簡易シミュレーション
         </h2>
         <p class="cta-text">
             御社の「車両台数」「従業員数」「だいたいの移動距離（月）」を教えていただくだけで、
