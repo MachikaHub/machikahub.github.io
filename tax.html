@@ -553,15 +553,52 @@
 
         /* スマホ用調整 */
         @media (max-width: 600px) {
+            /* ヘッダー・文字サイズ調整 */
+            .header-hero { padding: 60px 20px; }
             .header-main { font-size: 1.8rem; }
-            .header-copy { font-size: 1.1rem; }
-            .section { padding: 60px 20px; }
-            .section-title { font-size: 1.6rem; margin-bottom: 30px; flex-direction: column;}
-            .solution-box { padding: 30px 20px; }
-            .case-box { padding: 25px 20px; }
-            .case-item { min-width: 100%; margin-bottom: 15px; }
-            .btn { font-size: 1.1rem; padding: 20px; }
+            .header-copy { font-size: 1rem; text-align: left; }
+            .section { padding: 50px 20px; }
+            .section-title { font-size: 1.5rem; margin-bottom: 30px; flex-direction: column;}
+            
+            /* 漫画セクション */
             .manga-section img { max-width: 100%; box-shadow: none; }
+
+            /* ケーススタディ（ボックス）の修正 */
+            .case-grid { display: block; }
+            .case-box { padding: 25px 20px; width: auto; }
+            .case-item { width: 100%; min-width: 0; margin-bottom: 20px; box-sizing: border-box; }
+            .case-number { font-size: 1.8rem; }
+
+            /* プロフィール欄（①の修正含む） */
+            .profile-box { 
+                display: block;
+                text-align: center; /* 画像などは中央寄せのまま */
+                padding: 30px 20px;
+            }
+            .profile-img { margin: 0 auto 20px; width: 100px; }
+            .profile-name-area { text-align: center; }
+            .profile-name-area img { margin: 0 auto; }
+            
+            /* 文章部分だけ左寄せに戻す（ここが修正点） */
+            .profile-text { text-align: left; }
+
+
+            /* CTAセクション（②の修正含む） */
+            .cta-section { padding: 60px 20px; }
+            /* 文章を左寄せにする（ここが修正点） */
+            .cta-text { text-align: left; }
+            
+            /* ボタン調整 */
+            .btn { 
+                font-size: 1rem; 
+                padding: 20px 15px; 
+                width: 100%; 
+                max-width: 100%;
+                box-sizing: border-box;
+                white-space: normal;
+                line-height: 1.4;
+            }
+            .micro-copy { white-space: normal; }
         }
 
         /* =========================================
