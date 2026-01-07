@@ -94,15 +94,15 @@
         }
         
        /* =========================================
-           ヘッダー (Top Page Style)
+           ヘッダーナビゲーション (修正箇所)
            ========================================= */
-        header {
+        .site-header { /* クラス名指定に変更 */
             background-color: var(--white);
             height: 70px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: 9999;
+            z-index: 9999; /* ここが効くようになります */
             display: flex;
             align-items: center;
         }
@@ -145,21 +145,20 @@
             .logo { font-size: 1.2rem; }
         }
 
-/* --- メインビジュアル (Heroエリア) のスタイル --- */
+        /* --- メインビジュアル (Heroエリア) のスタイル --- */
         .header-hero {
             position: relative;
             width: 100%;
-            /* 画像がない場合も考慮して濃い青背景を指定 */
-            background-color: #002a5b; 
-            /* 画像があれば表示（パスは適宜変更してください） */
-            background-image: url('headtax.jpg'); 
+            background-color: #002a5b; /* 画像がない場合の背景色 */
+            background-image: url('headtax.jpg'); /* 画像指定 */
             background-size: cover;
             background-position: center;
             color: #fff;
             padding: 100px 20px 80px; /* 余白調整 */
             text-align: center;
             overflow: hidden;
-            border-radius: 0 0 15px 15px; /* 下側だけ角丸にするとお洒落かも */
+            border-radius: 0 0 15px 15px; /* 下側だけ角丸 */
+            box-sizing: border-box; /* パディングを含めた幅計算 */
         }
         /* 写真の上に被せる黒いフィルター */
         .header-hero::before {
@@ -513,7 +512,7 @@
 </head>
 <body>
 
-    <header>
+    <header class="site-header">
         <div class="header-inner">
             <a href="#" class="logo">合同会社MACHIKA</a>
             <nav>
@@ -531,7 +530,7 @@
 
 <div class="container">
 
-<header class="header-hero">
+<div class="header-hero">
         <div class="header-content">
             <div class="header-sub">運送業・建設業の経営者様へ</div>
             <h1 class="header-main">
@@ -547,7 +546,7 @@
                 税理士監修・合法的な制度活用のみ扱っています
             </p>
         </div>
-    </header>
+</div>
 
     <section class="manga-section">
         <img src="lpmanga.jpg" alt="節税と手取り最大化の漫画"><br>
