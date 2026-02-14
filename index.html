@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-80HP9D8E78"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-80HP9D8E78"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -33,10 +32,13 @@
         
         /* --- 共通カラー変数 --- */
         :root {
-            --main-color: #0f1c3f; /* 信頼のネイビー */
-            --accent-color: #d4a024; /* 成果のゴールド */
+            /* メインカラーを少し引き締まったネイビーに */
+            --main-color: #0f1c3f; 
+            --accent-color: #d4a024; 
             --text-white: #ffffff;
             --bg-gray: #f4f4f4;
+            --alert-color: #d9534f; /* 警告用レッド */
+            --green-color: #2e7d32; /* フィードバック用グリーン */
         }
 
         /* --- 共通コンポーネント --- */
@@ -85,11 +87,10 @@
             margin-top: 5px;
             font-weight: normal;
         }
-/* =========================================
-           ヘッダー (Top Page Style)
-           ========================================= */
-        header {
-            background-color: var(--white);
+
+        /* --- ヘッダー --- */
+        header.top-nav {
+            background-color: #fff;
             height: 70px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky;
@@ -110,7 +111,7 @@
         .logo {
             font-size: 1.4rem;
             font-weight: bold;
-            color: var(--primary);
+            color: var(--main-color);
             letter-spacing: 1px;
         }
         .nav-menu {
@@ -121,20 +122,20 @@
         }
         .nav-menu li a {
             font-size: 0.9rem;
-            color: var(--primary);
+            color: var(--main-color);
             font-weight: bold;
         }
-        /* スマホ用簡易レスポンシブ */
         @media (max-width: 768px) {
-            .nav-menu { display: none; } /* ハンバーガーメニューは省略 */
+            .nav-menu { display: none; }
             .logo { font-size: 1.2rem; }
         }
+
         /* --- 1. ファーストビュー (FV) --- */
         .hero {
             position: relative;
-            height: 100vh; /* 画面いっぱいに表示 */
+            height: 100vh;
             min-height: 600px;
-            background-image: url('header.png'); /* ヘッダー画像 */
+            background-image: url('header.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -143,12 +144,11 @@
             color: #fff;
             text-align: center;
         }
-        /* 画像を暗くするフィルター */
         .hero::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.5); /* 黒の半透明レイヤー */
+            background: rgba(0, 0, 0, 0.5);
         }
         .hero-content {
             position: relative;
@@ -156,7 +156,7 @@
             padding: 20px;
         }
         .hero-title {
-            font-size: 3rem; /* PC用サイズ */
+            font-size: 3rem;
             font-weight: 900;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
             margin-bottom: 20px;
@@ -182,19 +182,13 @@
 
         /* --- 2. 導入（マンガ） --- */
         .intro-section { background-color: #fff; }
-        .intro-lead {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 40px;
-        }
         .manga-wrapper {
             max-width: 900px;
             margin: 0 auto;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .problem-list {
-            background-color: #fdf5e6; /* 薄いオレンジ */
+            background-color: #fdf5e6;
             padding: 40px;
             margin-top: 50px;
             border-radius: 10px;
@@ -222,6 +216,19 @@
             position: absolute;
             left: 0;
             color: var(--accent-color);
+        }
+        /* 追加：警告用テキストのスタイル */
+        .alert-text {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--alert-color);
+            margin-top: 50px;
+            line-height: 1.5;
+            padding: 20px;
+            border: 2px solid #fbeeed;
+            background-color: #fdf5f5;
+            border-radius: 8px;
         }
 
         /* --- 3. ソリューション (3つの武器) --- */
@@ -257,97 +264,81 @@
         }
         .pillar-desc { font-size: 0.95rem; text-align: left; }
 
-        /* --- 4. メリット・実績 --- */
-        /* --- Worksセクションの修正用CSS --- */
-/* --- Worksセクションの修正用CSS（改良版） --- */
-/* --- Worksセクション修正用（決定版） --- */
-.work-media-wrapper {
-    margin-bottom: 20px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    background: #000; /* 動画読み込み前の背景 */
-}
-
-/* 動画用：16:9の比率を強制的に守らせる魔法のコード */
-.video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* 16:9比率 */
-    height: 0;
-}
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* チラシ用：高さを指定せず、画像の長さに合わせる */
-.flyer-container {
-    background: #f4f4f4;
-    text-align: center;
-}
-.flyer-container img {
-    width: 100%;
-    height: auto; /* 高さは自動調整 */
-    display: block;
-}
-        
+        /* --- 4. メリット・実績 (Works) --- */
         .works-section { background-color: #fff; }
-        .compare-box {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-            flex-wrap: wrap;
+        .intro-lead { text-align: center; }
+        
+        /* Works用リストのスタイル修正 */
+        .work-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            text-align: left;
+            display: inline-block;
         }
-        .compare-item {
-            flex: 1;
-            min-width: 300px;
-            border: 1px solid #ddd;
-            padding: 20px;
-            text-align: center;
-        }
-        .compare-title {
-            font-weight: bold;
-            font-size: 1.2rem;
+        .work-list li {
+            position: relative;
+            padding-left: 1.5em;
             margin-bottom: 10px;
-            display: block;
+            font-size: 0.95rem;
+            color: #555;
+            font-weight: bold;
         }
-        .badge-ng { color: #fff; background: #999; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
-        .badge-ok { color: #fff; background: var(--accent-color); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+        .work-list li::before {
+            content: '・';
+            position: absolute;
+            left: 0;
+            color: #999;
+        }
 
-        /* --- 5. 料金プラン --- */
+        /* --- 5. 料金プラン (比較テーブル化) --- */
         .plan-section { background-color: var(--bg-gray); }
+        .plan-table-wrapper {
+            overflow-x: auto; /* スマホではみ出た場合にスクロールさせる */
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
         .plan-table {
             width: 100%;
             border-collapse: collapse;
-            background: #fff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            min-width: 600px; /* PCレイアウトをある程度維持 */
         }
         .plan-table th, .plan-table td {
             border: 1px solid #eee;
             padding: 20px;
             text-align: center;
+            vertical-align: middle;
         }
-        .plan-table th {
+        .plan-table thead th {
             background-color: var(--main-color);
             color: #fff;
+            width: 35%;
+        }
+        .plan-table thead th:first-child {
+            background-color: #f4f4f4;
+            color: #333;
             width: 30%;
+            border-top: none;
+            border-left: none;
+        }
+        .plan-table tbody th {
+            background-color: #f9f9f9;
+            text-align: left;
+            font-weight: bold;
+            color: #333;
         }
         .plan-name { font-size: 1.2rem; font-weight: bold; display: block; }
-        .plan-price { display: block; margin-top: 10px; color: var(--accent-color); font-weight: bold; }
-        .plan-note { font-size: 0.8rem; color: #666; margin-top: 20px; text-align: right; }
+        .plan-price { display: block; margin-top: 10px; font-size: 1.4rem; color: var(--accent-color); font-weight: bold; }
+        .mark-ok { color: var(--accent-color); font-weight: bold; font-size: 1.5rem; }
+        .mark-ng { color: #ccc; font-weight: bold; font-size: 1.2rem; }
+        .plan-note { font-size: 0.85rem; color: #666; margin-top: 15px; text-align: right; }
         
-        /* 推奨プランのハイライト */
-        .recommend {
-            background-color: #fffcf0;
+        /* 契約プランのハイライト */
+        .recommend-col {
+            background-color: #fffcf0 !important;
             border: 2px solid var(--accent-color) !important;
-            position: relative;
         }
-
 
         /* --- 6. プロフィール --- */
         .profile-section { background-color: #fff; }
@@ -374,9 +365,7 @@
         .profile-role { font-size: 1rem; color: #666; display: block; margin-bottom: 20px; }
         .profile-msg { margin-bottom: 20px; font-style: italic; color: #555; font-size: 1.1rem; }
 
-/* =========================================
-           フッター (Top Page Style)
-           ========================================= */
+        /* --- フッター --- */
         footer {
             background-color: #222;
             color: #ccc;
@@ -389,18 +378,11 @@
             gap: 40px;
             margin-bottom: 40px;
         }
-        .footer-logo { font-size: 1.2rem; color: var(--white); font-weight: bold; margin-bottom: 15px; display: block; }
+        .footer-logo { font-size: 1.2rem; color: var(--text-white); font-weight: bold; margin-bottom: 15px; display: block; }
         .footer-nav ul { list-style: none; padding: 0; }
         .footer-nav li { margin-bottom: 10px; }
         .copyright { border-top: 1px solid #444; padding-top: 20px; text-align: center; font-size: 0.8rem; }
         
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-            .work-item { flex-direction: column; }
-            .plan-table th, .plan-table td { display: block; width: 100%; box-sizing: border-box; }
-            .profile-wrap { text-align: center; justify-content: center; }
-        }
-
         /* --- スマホ対応 (レスポンシブ) --- */
         @media (max-width: 768px) {
             .hero-title { font-size: 2rem; }
@@ -408,34 +390,31 @@
             .three-pillars { flex-direction: column; }
             .profile-box { flex-direction: column; align-items: center; }
             .profile-img { width: 100%; max-width: 300px; }
-            .plan-table th, .plan-table td { display: block; width: 100%; }
-            .plan-table th { margin-top: 20px; }
+            .plan-table th, .plan-table td { padding: 10px; font-size: 0.9rem; }
+            .plan-price { font-size: 1.1rem; }
         }
+
         /* --- アイコンフォント用の設定 --- */
-.material-symbols-outlined {
-    font-family: 'Material Symbols Outlined';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;  /* 基本サイズ */
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-}
-
-/* 3つの武器（Solutionセクション）のアイコンサイズ調整 */
-.pillar-icon .material-symbols-outlined {
-    font-size: 3rem; /* 大きくする */
-}
-
-        
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px; 
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .pillar-icon .material-symbols-outlined {
+            font-size: 3rem; 
+        }
     </style>
 </head>
 <body>
-<header>
+    <header class="top-nav">
         <div class="header-inner">
             <a href="#" class="logo">合同会社MACHIKA</a>
             <nav>
@@ -445,11 +424,12 @@
                     <li><a href="#works">実績・サービス</a></li>
                     <li><a href="#plan">料金プラン</a></li>
                     <li><a href="#profile">プロフィール</a></li>
-                    <li><a href="#contact" style="color:var(--accent);">お問い合わせ</a></li>
+                    <li><a href="#contact" style="color:var(--accent-color);">お問い合わせ</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
     <header class="hero">
         <div class="hero-content">
             <span class="hero-badge">法人1~3期。まだ"売り方"が決まっていないBtoB企業へ</span>
@@ -466,7 +446,7 @@
         </div>
     </header>
 
-    <section class="section intro-section">
+    <section id="problem" class="section intro-section">
         <div class="container">
             <div class="section-title">
                 <span>Problem</span>
@@ -486,13 +466,14 @@
                     <li>結局、社長がマーケ担当になっている</li>
                 </ul>
             </div>
-            <div class="section-title">
+            
+            <div class="alert-text">
                 この状態が続くと広告費だけが消え、<br>営業効率は落ちます。
             </div>
         </div>
     </section>
 
-    <section class="section solution-section">
+    <section id="solution" class="section solution-section">
         <div class="container">
             <div class="section-title">
                 <span>Solution</span>
@@ -506,26 +487,26 @@
             <div class="three-pillars">
                 <div class="pillar-card">
                     <span class="pillar-icon">
-    <span class="material-symbols-outlined">analytics</span>
-</span>
+                        <span class="material-symbols-outlined">analytics</span>
+                    </span>
                     <h3 class="pillar-title">戦略設計<br><small>設計図作成</small></h3>
                     <p class="pillar-desc">
                         誰に / 何を / どの順番で売るか。サービスの価値定義とターゲットを再設計します。
                     </p>
                 </div>
                 <div class="pillar-card">
-<span class="pillar-icon">
-    <span class="material-symbols-outlined">monetization_on</span>
-</span>
+                    <span class="pillar-icon">
+                        <span class="material-symbols-outlined">monetization_on</span>
+                    </span>
                     <h3 class="pillar-title">導線設計<br><small>売れる流れを作る</small></h3>
                     <p class="pillar-desc">
                         広告・チラシ・展示会・紹介・営業資料・LPを1本の導線に統合します。
                     </p>
                 </div>
                 <div class="pillar-card">
-<span class="pillar-icon">
-    <span class="material-symbols-outlined">movie</span>
-</span>
+                    <span class="pillar-icon">
+                        <span class="material-symbols-outlined">movie</span>
+                    </span>
                     <h3 class="pillar-title">実装管理<br><small>形にする</small></h3>
                     <p class="pillar-desc">
                         施策の優先順位を決定し、制作ディレクションを行いつつ、広告テスト・効果検証と改善指示をします。
@@ -535,7 +516,7 @@
         </div>
     </section>
 
-<section class="section works-section">
+    <section id="works" class="section works-section">
         <div class="container">
             <div class="section-title">
                 <span>Works</span>
@@ -547,71 +528,118 @@
                 必要な手段だけを選びます。
             </p>
 
-            <div class="works-grid" style="display:flex; flex-wrap:wrap; gap:30px; justify-content:center;">
+            <div class="works-grid" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
                 
-                <div class="work-card" style="flex:1; min-width:300px; border:1px solid #eee; padding:20px; border-radius:8px;">
-    <div style="background:var(--main-color); color:#fff; padding:5px 15px; display:inline-block; border-radius:4px; margin-bottom:15px; font-weight:bold;">
-        オンライン施策
-    </div>
-    <h3 style="margin-bottom:15px; font-size:1.3rem;">データを元に<br>戦略設計する</h3>
-        <p style="margin-top:15px; font-size:0.9rem; color:#666;">
-        <li>LP制作・修正</li>
-        <li>Web広告</li>
-        <li>SNS設計・運用</li>
-        <li>MEO対策</li>
-        <li>反響資料改善</li>
-        <li>漫画・動画制作</li>
-    </p>
-</div>
+                <div class="work-card" style="flex:1; min-width:280px; border:1px solid #eee; padding:30px 20px; border-radius:8px; text-align:center;">
+                    <div style="background:var(--main-color); color:#fff; padding:5px 15px; display:inline-block; border-radius:4px; margin-bottom:15px; font-weight:bold;">
+                        オンライン施策
+                    </div>
+                    <h3 style="margin-bottom:15px; font-size:1.3rem;">データを元に<br>戦略設計する</h3>
+                    <ul class="work-list">
+                        <li>LP制作・修正</li>
+                        <li>Web広告運用</li>
+                        <li>SNS設計・運用</li>
+                        <li>MEO対策</li>
+                        <li>反響資料改善</li>
+                        <li>漫画・動画制作</li>
+                    </ul>
+                </div>
 
-<div class="work-card" style="flex:1; min-width:300px; border:1px solid #eee; padding:20px; border-radius:8px;">
-    <div style="background:var(--accent-color); color:#fff; padding:5px 15px; display:inline-block; border-radius:4px; margin-bottom:15px; font-weight:bold;">
-        オフライン施策
-    </div>
-    <h3 style="margin-bottom:15px; font-size:1.3rem;">時に泥臭く<br>顧客の感情を動かす</h3>
-        <p style="margin-top:15px; font-size:0.9rem; color:#666;">
-        <li>展示会</li>
-        <li>チラシDM</li>
-        <li>FAX営業</li>
-        <li>ハガキDM</li>
-        <li>セミナー実施</li>
-        <li>電話営業</li>
-    </p>
-</div>
+                <div class="work-card" style="flex:1; min-width:280px; border:1px solid #eee; padding:30px 20px; border-radius:8px; text-align:center;">
+                    <div style="background:var(--accent-color); color:#fff; padding:5px 15px; display:inline-block; border-radius:4px; margin-bottom:15px; font-weight:bold;">
+                        オフライン施策
+                    </div>
+                    <h3 style="margin-bottom:15px; font-size:1.3rem;">時に泥臭く<br>顧客の感情を動かす</h3>
+                    <ul class="work-list">
+                        <li>展示会出展サポート</li>
+                        <li>チラシ・DM作成</li>
+                        <li>FAX営業</li>
+                        <li>ハガキDM</li>
+                        <li>セミナー実施</li>
+                        <li>電話営業支援</li>
+                    </ul>
+                </div>
+
+                <div class="work-card" style="flex:1; min-width:280px; border:1px solid #eee; padding:30px 20px; border-radius:8px; text-align:center;">
+                    <div style="background:var(--green-color); color:#fff; padding:5px 15px; display:inline-block; border-radius:4px; margin-bottom:15px; font-weight:bold;">
+                        改善・フィードバック
+                    </div>
+                    <h3 style="margin-bottom:15px; font-size:1.3rem;">PDCAを回し<br>成果を最大化する</h3>
+                    <ul class="work-list">
+                        <li>Google Analytics分析</li>
+                        <li>顧客データ分析</li>
+                        <li>LPO（成約率改善）</li>
+                        <li>A/Bテストの実施</li>
+                        <li>広告運用チューニング</li>
+                        <li>月次レポート・報告会</li>
+                    </ul>
+                </div>
 
             </div>
         </div>
     </section>
 
-    <section class="section plan-section">
+    <section id="plan" class="section plan-section">
         <div class="container">
             <div class="section-title">
                 <span>Plan</span>
                 私はここまで責任を持ちます。
             </div>
 
-            <table class="plan-table">
-                <tbody>
-                    <tr>
-                        <th>
-                            <span class="plan-name">外注CMOパートナー契約</span>
-                        </th>
-                        <td>
-                            <span class="plan-price">月額：15万円（税抜）</span>
-                            <br>私はいかに責任を持ちます：</br>
-                            <li>売れる構造の設計</li>
-                            <li>施策の優先順位決定</li>
-                            <li>実装が進むためのディレクション</li>
-                            <li>改善のための検証設計</li>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="plan-note">※制作や外注費など実費は別で発生します。</p>
+            <div class="plan-table-wrapper">
+                <table class="plan-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <span class="plan-name">戦略アドバイザリー</span>
+                                <span class="plan-price">月額 10万円<small>（税抜）</small></span>
+                            </th>
+                            <th class="recommend-col" style="background-color: var(--main-color);">
+                                <span class="plan-name">外注CMOパートナー契約</span>
+                                <span class="plan-price" style="color:#fff;">月額 15万円<small>（税抜）</small></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>現状分析・課題の抽出</th>
+                            <td><span class="mark-ok">〇</span></td>
+                            <td class="recommend-col"><span class="mark-ok">〇</span></td>
+                        </tr>
+                        <tr>
+                            <th>マーケティング戦略・導線の設計</th>
+                            <td><span class="mark-ok">〇</span></td>
+                            <td class="recommend-col"><span class="mark-ok">〇</span></td>
+                        </tr>
+                        <tr>
+                            <th>月1回のオンラインMTG（壁打ち）</th>
+                            <td><span class="mark-ok">〇</span></td>
+                            <td class="recommend-col"><span class="mark-ok">〇</span></td>
+                        </tr>
+                        <tr>
+                            <th>施策実施のディレクション（外注管理）</th>
+                            <td><span class="mark-ng">×</span><br><small style="color:#666;">※自社で進行いただきます</small></td>
+                            <td class="recommend-col"><span class="mark-ok">〇</span></td>
+                        </tr>
+                        <tr>
+                            <th>施策の実行管理・PDCA運用</th>
+                            <td><span class="mark-ng">×</span></td>
+                            <td class="recommend-col"><span class="mark-ok">〇</span></td>
+                        </tr>
+                        <tr>
+                            <th>チャットでの随時相談</th>
+                            <td><span class="mark-ng">×</span></td>
+                            <td class="recommend-col"><span class="mark-ok">〇</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="plan-note">※制作費、広告費、ツール利用料などの実費は別途発生いたします。</p>
         </div>
     </section>
 
-    <section class="section profile-section">
+    <section id="profile" class="section profile-section">
         <div class="container">
             <div class="section-title">
                 <span>Profile</span>
@@ -622,8 +650,7 @@
                 <img src="profile.png" alt="プロフィール写真" class="profile-img">
                 <div class="profile-text">
                     <span class="profile-role">中小企業診断士 / 販促・マーケティングコンサルタント</span>
-
-                    <h3 class="profile-name"><img src="name.jpg"></h3>
+                    <h3 class="profile-name"><img src="name.jpg" alt="名前"></h3>
                     
                     <p class="profile-msg">
                         素晴らしいIT・サービスでも、<br>
@@ -642,36 +669,36 @@
         </div>
     </section>
 
-<section class="section" id="contact" style="background:#f8f9fa; padding:80px 20px; text-align:center;">
-    <h2 style="font-size:2rem; margin-bottom:40px; color:#333; font-weight:bold;">
-        まずは「オンライン壁打ち」しましょう
-    </h2>
-    
-    <p style="margin-bottom:30px; font-weight:bold;">
-        今の売り方は構造的に間違っていないか。<br>
-        施策の順番は正しいか。<br>
-        そもそも今、広告を打つ段階か。<br>
-これらを含め、無料で相談に乗ります。
-    </p>
-
-    <a href="https://forms.gle/Bnx2JSotMyagQjnT9" class="btn btn-form" style="background:#c4a300; color:#fff; text-decoration:none; padding:20px 40px; border-radius:50px; display:block; text-align:center; font-weight:bold; font-size:1.3rem; max-width:480px; margin:0 auto 30px; box-shadow:0 5px 15px rgba(196,163,0,0.4); transition:0.3s;">
-        【無料】オンライン壁打ちを申し込む
-        <span style="display:block; font-size:0.9rem; font-weight:normal; margin-top:5px;">※Googleフォームへ移動します</span>
-    </a>
-
-    <div style="margin-top:40px; border-top:1px solid #ddd; padding-top:30px; max-width:600px; margin-left:auto; margin-right:auto;">
-        <p style="font-size:0.95rem; color:#666; margin-bottom:15px;">
-            「LINEで相談したい」という方はこちら
-        </p>
+    <section class="section" id="contact" style="background:#f8f9fa; padding:80px 20px; text-align:center;">
+        <h2 style="font-size:2rem; margin-bottom:40px; color:#333; font-weight:bold;">
+            まずは「オンライン壁打ち」しましょう
+        </h2>
         
-        <a href="https://lin.ee/3ThqYBl" style="background:#06C755; color:#fff; text-decoration:none; padding:12px 25px; border-radius:50px; display:inline-flex; align-items:center; gap:8px; font-weight:bold; font-size:1rem; box-shadow:0 3px 10px rgba(6,199,85,0.2);">
-            <span class="material-icons-round" style="font-size:1.3rem;">chat</span>
-            LINEでサクッと相談する
-        </a>
-    </div>
-</section>
+        <p style="margin-bottom:30px; font-weight:bold;">
+            今の売り方は構造的に間違っていないか。<br>
+            施策の順番は正しいか。<br>
+            そもそも今、広告を打つ段階か。<br>
+            これらを含め、無料で相談に乗ります。
+        </p>
 
-<footer>
+        <a href="https://forms.gle/Bnx2JSotMyagQjnT9" class="btn btn-form" style="background:#c4a300; color:#fff; text-decoration:none; padding:20px 40px; border-radius:50px; display:block; text-align:center; font-weight:bold; font-size:1.3rem; max-width:480px; margin:0 auto 30px; box-shadow:0 5px 15px rgba(196,163,0,0.4); transition:0.3s;">
+            【無料】オンライン壁打ちを申し込む
+            <span style="display:block; font-size:0.9rem; font-weight:normal; margin-top:5px;">※Googleフォームへ移動します</span>
+        </a>
+
+        <div style="margin-top:40px; border-top:1px solid #ddd; padding-top:30px; max-width:600px; margin-left:auto; margin-right:auto;">
+            <p style="font-size:0.95rem; color:#666; margin-bottom:15px;">
+                「LINEで相談したい」という方はこちら
+            </p>
+            
+            <a href="https://lin.ee/3ThqYBl" style="background:#06C755; color:#fff; text-decoration:none; padding:12px 25px; border-radius:50px; display:inline-flex; align-items:center; gap:8px; font-weight:bold; font-size:1rem; box-shadow:0 3px 10px rgba(6,199,85,0.2);">
+                <span class="material-symbols-outlined" style="font-size:1.3rem;">chat</span>
+                LINEでサクッと相談する
+            </a>
+        </div>
+    </section>
+
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div>
