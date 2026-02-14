@@ -32,9 +32,9 @@
         
         /* --- 共通カラー変数 --- */
         :root {
-            /* メインカラーを少し引き締まったネイビーに */
-            --main-color: #0f1c3f; 
-            --accent-color: #d4a024; 
+            var(--main-color): #0f1c3f; 
+            --main-color: #0f1c3f; /* 信頼のネイビー */
+            --accent-color: #d4a024; /* 成果のゴールド */
             --text-white: #ffffff;
             --bg-gray: #f4f4f4;
             --alert-color: #d9534f; /* 警告用レッド */
@@ -201,23 +201,25 @@
         }
         .problem-list ul {
             list-style: none;
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto;
         }
         .problem-list li {
             position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
+            padding-left: 35px;
+            margin-bottom: 20px;
             font-weight: bold;
             font-size: 1.1rem;
+            line-height: 1.5;
         }
         .problem-list li::before {
             content: '✔';
             position: absolute;
             left: 0;
+            top: 2px;
             color: var(--accent-color);
+            font-size: 1.2rem;
         }
-        /* 追加：警告用テキストのスタイル */
         .alert-text {
             text-align: center;
             font-size: 1.6rem;
@@ -268,7 +270,6 @@
         .works-section { background-color: #fff; }
         .intro-lead { text-align: center; }
         
-        /* Works用リストのスタイル修正 */
         .work-list {
             list-style: none;
             padding: 0;
@@ -294,50 +295,76 @@
         /* --- 5. 料金プラン (比較テーブル化) --- */
         .plan-section { background-color: var(--bg-gray); }
         .plan-table-wrapper {
-            overflow-x: auto; /* スマホではみ出た場合にスクロールさせる */
+            overflow-x: auto; 
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 1px; /* 枠線をきれいに見せるため */
         }
         .plan-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 600px; /* PCレイアウトをある程度維持 */
+            min-width: 600px; 
         }
+        
+        /* 表の線を統一 (#cccでグレーの線) */
         .plan-table th, .plan-table td {
-            border: 1px solid #eee;
+            border: 1px solid #ccc;
             padding: 20px;
             text-align: center;
             vertical-align: middle;
         }
-        .plan-table thead th {
+        
+        /* 左上の空白セル */
+        .plan-table thead th:first-child {
+            background-color: #f4f4f4;
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+        }
+        
+        /* 中央の通常プランヘッダー */
+        .plan-table thead th:nth-child(2) {
             background-color: var(--main-color);
             color: #fff;
             width: 35%;
         }
-        .plan-table thead th:first-child {
-            background-color: #f4f4f4;
-            color: #333;
-            width: 30%;
-            border-top: none;
-            border-left: none;
+        
+        /* 右のおすすめプランヘッダー（色がつかない問題を修正） */
+        .plan-table thead th.recommend-header {
+            background-color: var(--accent-color) !important;
+            color: #fff;
+            border: 2px solid var(--accent-color);
+            width: 35%;
         }
+
+        /* 左側の項目列 */
         .plan-table tbody th {
             background-color: #f9f9f9;
             text-align: left;
             font-weight: bold;
             color: #333;
         }
+
         .plan-name { font-size: 1.2rem; font-weight: bold; display: block; }
-        .plan-price { display: block; margin-top: 10px; font-size: 1.4rem; color: var(--accent-color); font-weight: bold; }
+        .plan-price { display: block; margin-top: 10px; font-size: 1.4rem; font-weight: bold; }
+        
+        /* 色分け設定 */
+        .price-normal { color: var(--accent-color); }
+        .price-recommend { color: #fff; }
+
         .mark-ok { color: var(--accent-color); font-weight: bold; font-size: 1.5rem; }
         .mark-ng { color: #ccc; font-weight: bold; font-size: 1.2rem; }
         .plan-note { font-size: 0.85rem; color: #666; margin-top: 15px; text-align: right; }
         
-        /* 契約プランのハイライト */
+        /* 契約プラン（右列）のハイライト枠線と背景 */
         .recommend-col {
-            background-color: #fffcf0 !important;
-            border: 2px solid var(--accent-color) !important;
+            background-color: #fffcf0;
+            border-left: 2px solid var(--accent-color) !important;
+            border-right: 2px solid var(--accent-color) !important;
+        }
+        /* テーブル最後の一番下だけ太線を引く */
+        .plan-table tbody tr:last-child .recommend-col {
+            border-bottom: 2px solid var(--accent-color) !important;
         }
 
         /* --- 6. プロフィール --- */
@@ -460,10 +487,10 @@
             <div class="problem-list">
                 <h3>こんな状態になっていませんか？</h3>
                 <ul>
-                    <li>紹介・人脈頼みの受注が限界</li>
-                    <li>展示会・広告・営業…やったが場当たり的</li>
-                    <li>営業資料・HP・LPがバラバラ</li>
-                    <li>結局、社長がマーケ担当になっている</li>
+                    <li>既存の紹介や社長の人脈頼みの営業だけでは、新規開拓の限界を感じ始めている</li>
+                    <li>展示会出展やWeb広告、テレアポなど色々試してみたものの、単発的で成果に繋がっていない</li>
+                    <li>営業資料、コーポレートサイト、LPのメッセージが一貫しておらず、自社の強みが顧客に正しく伝わっていない</li>
+                    <li>社内にマーケティングを任せられる人材がおらず、結局社長自身が実務まで抱え込んでしまっている</li>
                 </ul>
             </div>
             
@@ -583,7 +610,7 @@
         <div class="container">
             <div class="section-title">
                 <span>Plan</span>
-                私はここまで責任を持ちます。
+                貴社の課題と社内リソースに合わせた<br>2つのプランをご用意しました。
             </div>
 
             <div class="plan-table-wrapper">
@@ -593,11 +620,11 @@
                             <th></th>
                             <th>
                                 <span class="plan-name">戦略アドバイザリー</span>
-                                <span class="plan-price">月額 10万円<small>（税抜）</small></span>
+                                <span class="plan-price price-normal">月額 10万円<small>（税抜）</small></span>
                             </th>
-                            <th class="recommend-col" style="background-color: var(--main-color);">
+                            <th class="recommend-header">
                                 <span class="plan-name">外注CMOパートナー契約</span>
-                                <span class="plan-price" style="color:#fff;">月額 15万円<small>（税抜）</small></span>
+                                <span class="plan-price price-recommend">月額 15万円<small>（税抜）</small></span>
                             </th>
                         </tr>
                     </thead>
